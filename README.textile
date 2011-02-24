@@ -2,11 +2,12 @@ h1. SVWebViewController
 
 SVWebViewController is a standard inline browser for iPhone. It's highly inspired by Tweetie's inline browser, which provides basic functionality with a UI design similar to Mobile Safari's. SVWebViewController features:
 
-* back and forward buttons (get auto-enabled appropriately)
+* auto-enabling back and forward buttons
 * a stop/refresh button
 * a standard action button ("Open in Safari" and "Email this")
 * navbar auto-creation depending on how controller is presented
 * talks with @setNetworkActivityIndicatorVisible@
+
 
 !http://samvermette.com/files/svwebviewcontroller.png!
 
