@@ -278,8 +278,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>12</integer>
-									<integer>10</integer>
+									<integer>3</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -301,7 +301,7 @@
 							<real>263</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>267 249 1507 1158 0 0 2560 1418 </string>
+						<string>820 223 1507 1158 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -319,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>22AE75A00F0B11FB00AA1219</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SVWebViewController.m</string>
+								<string>ViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,21 +327,21 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>22AE75A10F0B11FB00AA1219</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SVWebViewController.m</string>
+										<string>ViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>229E8EBD131641D000640202</string>
+										<string>229E8ECA131644EB00640202</string>
 										<key>history</key>
 										<array>
 											<string>229E8E601316336E00640202</string>
-											<string>229E8E651316336E00640202</string>
 											<string>229E8E661316336E00640202</string>
 											<string>229E8E691316357900640202</string>
-											<string>229E8E6A1316357900640202</string>
-											<string>229E8EBA131641D000640202</string>
 											<string>229E8EBB131641D000640202</string>
-											<string>229E8EBC131641D000640202</string>
+											<string>229E8EC6131644EB00640202</string>
+											<string>229E8EC7131644EB00640202</string>
+											<string>229E8EC8131644EB00640202</string>
+											<string>229E8EC9131644EB00640202</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -357,7 +357,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1222, 886}}</string>
 								<key>RubberWindowFrame</key>
-								<string>267 249 1507 1158 0 0 2560 1418 </string>
+								<string>820 223 1507 1158 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -436,7 +436,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {1222, 199}}</string>
 										<key>RubberWindowFrame</key>
-										<string>267 249 1507 1158 0 0 2560 1418 </string>
+										<string>820 223 1507 1158 0 0 2560 1418 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -656,13 +656,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>229E8EBE131641D000640202</string>
+		<string>229E8EC31316447100640202</string>
 		<string>229E8E5D1316331F00640202</string>
 		<string>229E8E521316328000640202</string>
 		<string>/Users/sam/Documents/iOS/SVWebViewController/Sample/SVWeb.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>267 249 1507 1158 0 0 2560 1418 </string>
+	<string>820 223 1507 1158 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

@@ -6,17 +6,17 @@ SVWebViewController is a standard inline browser for iPhone. It's highly inspire
 * a stop/refresh button
 * a standard action button ("Open in Safari" and "Email this")
 * navbar auto-creation depending on how controller is presented
-* conforms to setNetworkActivityIndicatorVisible
+* talks with @setNetworkActivityIndicatorVisible@
 
-!http://samvermette.com/files/svwebviewcontroller/push.png!
-!http://samvermette.com/files/svwebviewcontroller/present.png!
-!http://samvermette.com/files/svwebviewcontroller/actions.png!
+!http://samvermette.com/files/svwebviewcontroller.png!
 
 h2. Installation
 
-Easiest way to install is to drag the SVWebViewController/SVWebViewController folder from the Finder directly into your project. That will add the SVWebViewController controller class, the .xib file and the image ressources (back and forward buttons, 1x and 2x) to your project. SVWebViewController also requires the *MessageUI* framework, so make sure you add that to your project as well.
+Easiest way to install is to drag the @SVWebViewController/SVWebViewController@ folder from the Finder directly into your project. That will add the SVWebViewController controller class, the .xib file and the image ressources (back and forward buttons, 1x and 2x) to your project. SVWebViewController requires the *MessageUI* framework, so make sure you add that to your project as well.
 
-h2. Usage:
+h2. Usage
+
+(see sample Xcode project in @/Sample@)
 
 Just like any UIViewController, SVWebViewController can be pushed into a UINavigationController stack:
 
