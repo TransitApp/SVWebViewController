@@ -12,7 +12,7 @@ SVWebViewController features:
 * talks with @setNetworkActivityIndicatorVisible@
 
 
-!http://samvermette.com/files/svwebviewcontroller2.png!
+!http://samvermette.com/files/svwebviewcontroller3.png!
 
 h2. Installation
 
