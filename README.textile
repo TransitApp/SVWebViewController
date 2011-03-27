@@ -1,11 +1,12 @@
 h1. SVWebViewController
 
-SVWebViewController is a standard inline browser for iPhone. It's highly inspired by Tweetie's inline browser, which provides basic functionality with a UI design similar to Mobile Safari's. SVWebViewController features:
+SVWebViewController is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's inline browser, and the iPad version on "Reeder":http://reederapp.com/ipad/'s. SVWebViewController features:
 
-* auto-enabling back and forward buttons
-* a stop/refresh button
-* a standard action button ("Open in Safari" and "Email this")
-* navbar auto-creation depending on how controller is presented
+* iPhone and iPad distinct UIs
+* landscape orientation support (iPad only)
+* back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Email this")
+* navbar auto-creation depending on how controller is presented (modaly or pushed in nav controller)
+* navbar title set to the currently visible web page
 * talks with @setNetworkActivityIndicatorVisible@
 
 
@@ -13,7 +14,7 @@ SVWebViewController is a standard inline browser for iPhone. It's highly inspire
 
 h2. Installation
 
-Easiest way to install is to drag the @SVWebViewController/SVWebViewController@ folder from the Finder directly into your project. That will add the SVWebViewController controller class, the .xib file and the image ressources (back and forward buttons, 1x and 2x) to your project. SVWebViewController requires the *MessageUI* framework, so make sure you add that to your project as well.
+Easiest way to install is to drag the @SVWebViewController/SVWebViewController@ folder from the Finder directly into your project. That will add the SVWebViewController controller class, the .xib file and the image ressources to your project. SVWebViewController requires the *MessageUI* framework, so make sure you add that to your project as well.
 
 h2. Usage
 
@@ -31,15 +32,6 @@ or be presented modally on top of the currently visible view controller:
 
 <pre>
 SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
-[self presentModalViewController:webViewController animated:YES];	
-[webViewController release];
-</pre>
-
-If you want the UINavigationBar to have a title, make sure you it __before__ you push the SVWebViewController:
-
-<pre>
-SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
-webViewController.title = @"Web Browser";
 [self presentModalViewController:webViewController animated:YES];	
 [webViewController release];
 </pre>

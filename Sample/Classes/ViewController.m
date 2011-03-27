@@ -16,27 +16,30 @@
 #pragma mark View lifecycle
 
 - (void)pushWebViewController {
-	
-	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
-	webViewController.title = @"Web Browser";
+
+	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
 	[self.navigationController pushViewController:webViewController animated:YES];
 	[webViewController release];
-	
 }
 
 
 - (void)presentWebViewController {
 	
-	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
-	webViewController.title = @"Web Browser";
+	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
+	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
 	[self presentModalViewController:webViewController animated:YES];	
 	[webViewController release];
-	
 }
 
 
 #pragma mark -
 #pragma mark Memory management
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Overriden to allow any orientation.
+	
+	return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
