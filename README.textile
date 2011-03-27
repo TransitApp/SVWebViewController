@@ -1,6 +1,8 @@
 h1. SVWebViewController
 
-SVWebViewController is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's inline browser, and the iPad version on "Reeder":http://reederapp.com/ipad/'s. SVWebViewController features:
+is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's inline browser, and the iPad version on "Reeder":http://reederapp.com/ipad/. 
+
+SVWebViewController features:
 
 * iPhone and iPad distinct UIs
 * landscape orientation support (iPad only)
@@ -10,7 +12,7 @@ SVWebViewController is a simple inline browser for iOS. The iPhone UI is highly 
 * talks with @setNetworkActivityIndicatorVisible@
 
 
-!http://samvermette.com/files/svwebviewcontroller.png!
+!http://samvermette.com/files/svwebviewcontroller2.png!
 
 h2. Installation
 
