@@ -53,10 +53,10 @@
 		separatorWidth = 50;
 		buttonWidth = 18;
 		
-		backBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webBack.png"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goBack)];
+		backBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goBack)];
 		backBarButton.width = buttonWidth;
 		
-		forwardBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webForward.png"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goForward)];
+		forwardBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goForward)];
 		forwardBarButton.width = buttonWidth;
 		
 		actionBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions)];
@@ -114,7 +114,7 @@
 		}
 		
 		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[backButton setBackgroundImage:[UIImage imageNamed:@"webBackTablet.png"] forState:UIControlStateNormal];
+		[backButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/back"] forState:UIControlStateNormal];
 		backButton.frame = CGRectZero;
 		[backButton addTarget:rWebView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 		backButton.adjustsImageWhenHighlighted = NO;
@@ -122,21 +122,21 @@
 		backButton.showsTouchWhenHighlighted = YES;
 		
 		forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[forwardButton setBackgroundImage:[UIImage imageNamed:@"webForwardTablet.png"] forState:UIControlStateNormal];
+		[forwardButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/forward"] forState:UIControlStateNormal];
 		forwardButton.frame = CGRectZero;
 		[forwardButton addTarget:rWebView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
 		forwardButton.adjustsImageWhenHighlighted = NO;
 		forwardButton.showsTouchWhenHighlighted = YES;
 		
 		actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[actionButton setBackgroundImage:[UIImage imageNamed:@"webActionTablet.png"] forState:UIControlStateNormal];
+		[actionButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/action"] forState:UIControlStateNormal];
 		actionButton.frame = CGRectZero;
 		[actionButton addTarget:self action:@selector(showActions) forControlEvents:UIControlEventTouchUpInside];
 		actionButton.adjustsImageWhenHighlighted = NO;
 		actionButton.showsTouchWhenHighlighted = YES;
 		
 		refreshStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"webRefreshTablet.png"] forState:UIControlStateNormal];
+		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/refresh"] forState:UIControlStateNormal];
 		refreshStopButton.frame = CGRectZero;
 		refreshStopButton.adjustsImageWhenHighlighted = NO;
 		refreshStopButton.showsTouchWhenHighlighted = YES;
@@ -291,13 +291,13 @@
 	if(rWebView.loading) {
 		[refreshStopButton removeTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton addTarget:rWebView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
-		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"webStopTablet"] forState:UIControlStateNormal];
+		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/stop"] forState:UIControlStateNormal];
 	}
 	
 	else {
 		[refreshStopButton removeTarget:rWebView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton addTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
-		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"webRefreshTablet"] forState:UIControlStateNormal];
+		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/refresh"] forState:UIControlStateNormal];
 	}
 }
 

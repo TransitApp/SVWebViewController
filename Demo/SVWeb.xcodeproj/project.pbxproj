@@ -11,18 +11,10 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		2214587513132D3200ED7D83 /* webBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 2214586E13132D3200ED7D83 /* webBack.png */; };
-		2214587613132D3200ED7D83 /* webBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2214586F13132D3200ED7D83 /* webBack@2x.png */; };
-		2214587713132D3200ED7D83 /* webForward.png in Resources */ = {isa = PBXBuildFile; fileRef = 2214587013132D3200ED7D83 /* webForward.png */; };
-		2214587813132D3200ED7D83 /* webForward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2214587113132D3200ED7D83 /* webForward@2x.png */; };
+		220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */; };
 		2214589B13133B2700ED7D83 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2214589913133B2700ED7D83 /* SVWebViewController.m */; };
 		2214589C13133B2700ED7D83 /* SVWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2214589A13133B2700ED7D83 /* SVWebViewController.xib */; };
 		221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2214589F13133B3600ED7D83 /* MessageUI.framework */; };
-		2217E293133A999800433AE3 /* webRefreshTablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2217E28F133A999800433AE3 /* webRefreshTablet.png */; };
-		2217E294133A999800433AE3 /* webActionTablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2217E290133A999800433AE3 /* webActionTablet.png */; };
-		2217E295133A999800433AE3 /* webForwardTablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2217E291133A999800433AE3 /* webForwardTablet.png */; };
-		2217E296133A999800433AE3 /* webBackTablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2217E292133A999800433AE3 /* webBackTablet.png */; };
-		2217E4C7133ABE1500433AE3 /* webStopTablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2217E4C6133ABE1500433AE3 /* webStopTablet.png */; };
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -36,19 +28,11 @@
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* SVWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2214586E13132D3200ED7D83 /* webBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webBack.png; sourceTree = "<group>"; };
-		2214586F13132D3200ED7D83 /* webBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webBack@2x.png"; sourceTree = "<group>"; };
-		2214587013132D3200ED7D83 /* webForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webForward.png; sourceTree = "<group>"; };
-		2214587113132D3200ED7D83 /* webForward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webForward@2x.png"; sourceTree = "<group>"; };
+		220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		2214589813133B2700ED7D83 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		2214589913133B2700ED7D83 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		2214589A13133B2700ED7D83 /* SVWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SVWebViewController.xib; sourceTree = "<group>"; };
 		2214589F13133B3600ED7D83 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		2217E28F133A999800433AE3 /* webRefreshTablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webRefreshTablet.png; sourceTree = "<group>"; };
-		2217E290133A999800433AE3 /* webActionTablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webActionTablet.png; sourceTree = "<group>"; };
-		2217E291133A999800433AE3 /* webForwardTablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webForwardTablet.png; sourceTree = "<group>"; };
-		2217E292133A999800433AE3 /* webBackTablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webBackTablet.png; sourceTree = "<group>"; };
-		2217E4C6133ABE1500433AE3 /* webStopTablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webStopTablet.png; sourceTree = "<group>"; };
 		22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* SVWeb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWeb_Prefix.pch; sourceTree = "<group>"; };
@@ -101,27 +85,11 @@
 				2214589813133B2700ED7D83 /* SVWebViewController.h */,
 				2214589913133B2700ED7D83 /* SVWebViewController.m */,
 				2214589A13133B2700ED7D83 /* SVWebViewController.xib */,
-				2214586D13132D3200ED7D83 /* Ressources */,
+				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
 			);
 			name = SVWebViewController;
 			path = ../SVWebViewController;
 			sourceTree = SOURCE_ROOT;
-		};
-		2214586D13132D3200ED7D83 /* Ressources */ = {
-			isa = PBXGroup;
-			children = (
-				2217E28F133A999800433AE3 /* webRefreshTablet.png */,
-				2217E290133A999800433AE3 /* webActionTablet.png */,
-				2217E291133A999800433AE3 /* webForwardTablet.png */,
-				2217E4C6133ABE1500433AE3 /* webStopTablet.png */,
-				2217E292133A999800433AE3 /* webBackTablet.png */,
-				2214586E13132D3200ED7D83 /* webBack.png */,
-				2214586F13132D3200ED7D83 /* webBack@2x.png */,
-				2214587013132D3200ED7D83 /* webForward.png */,
-				2214587113132D3200ED7D83 /* webForward@2x.png */,
-			);
-			path = Ressources;
-			sourceTree = "<group>";
 		};
 		22473B9A133800DC00F497E6 /* Resources-iPad */ = {
 			isa = PBXGroup;
@@ -226,17 +194,9 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
-				2214587513132D3200ED7D83 /* webBack.png in Resources */,
-				2214587613132D3200ED7D83 /* webBack@2x.png in Resources */,
-				2214587713132D3200ED7D83 /* webForward.png in Resources */,
-				2214587813132D3200ED7D83 /* webForward@2x.png in Resources */,
 				2214589C13133B2700ED7D83 /* SVWebViewController.xib in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
-				2217E293133A999800433AE3 /* webRefreshTablet.png in Resources */,
-				2217E294133A999800433AE3 /* webActionTablet.png in Resources */,
-				2217E295133A999800433AE3 /* webForwardTablet.png in Resources */,
-				2217E296133A999800433AE3 /* webBackTablet.png in Resources */,
-				2217E4C7133ABE1500433AE3 /* webStopTablet.png in Resources */,
+				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
