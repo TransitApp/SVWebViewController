@@ -21,7 +21,7 @@ h2. Installation
 
 h2. Usage
 
-(see sample Xcode project in @/Sample@)
+(see sample Xcode project in @/Demo@)
 
 Just like any UIViewController, SVWebViewController can be pushed into a UINavigationController stack:
 
