@@ -14,6 +14,8 @@
 - (void)setupToolbar;
 - (void)setupTabletToolbar;
 
+- (void)stopLoading;
+
 @end
 
 @implementation SVWebViewController
@@ -247,9 +249,9 @@
 	
 	UIBarButtonItem *sSeparator = [[UIBarButtonItem alloc] initWithCustomView:nil];
 	sSeparator.enabled = NO;
-	
-	if(rWebView.loading) {
-		refreshStopBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:rWebView action:@selector(stopLoading)];
+		
+	if(rWebView.loading && !stoppedLoading) {
+		refreshStopBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopLoading)];
 		sSeparator.width = separatorWidth+4;
 	}
 	
@@ -286,14 +288,14 @@
 	else
 		forwardButton.enabled = YES;
 	
-	if(rWebView.loading) {
+	if(rWebView.loading && !stoppedLoading) {
 		[refreshStopButton removeTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
-		[refreshStopButton addTarget:rWebView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+		[refreshStopButton addTarget:self action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/stop"] forState:UIControlStateNormal];
 	}
 	
 	else {
-		[refreshStopButton removeTarget:rWebView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+		[refreshStopButton removeTarget:self action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton addTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/refresh"] forState:UIControlStateNormal];
 	}
@@ -321,6 +323,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
+	stoppedLoading = NO;
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
 	if(!deviceIsTablet)
@@ -349,6 +352,16 @@
 #pragma mark -
 #pragma mark Action Methods
 
+- (void)stopLoading {
+	
+	stoppedLoading = YES;
+	[rWebView stopLoading];
+	
+	if(!deviceIsTablet)
+		[self setupToolbar];
+	else
+		[self setupTabletToolbar];
+}
 
 - (void)showActions {
 	

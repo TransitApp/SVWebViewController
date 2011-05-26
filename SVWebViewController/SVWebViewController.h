@@ -22,7 +22,7 @@
 	UILabel *titleLabel;
 	CGFloat titleLeftOffset;
 	
-	BOOL deviceIsTablet;
+	BOOL deviceIsTablet, stoppedLoading;
 }
 
 @property (nonatomic, retain) NSString *urlString;
