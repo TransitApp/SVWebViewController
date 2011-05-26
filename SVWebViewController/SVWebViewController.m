@@ -36,9 +36,7 @@
 
 	self.urlString = string;
 	
-	NSString *deviceType = [UIDevice currentDevice].model;
-	
-	if([deviceType isEqualToString:@"iPad"] || [deviceType isEqualToString:@"iPad Simulator"])
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		deviceIsTablet = YES;
 	
 	return self;
