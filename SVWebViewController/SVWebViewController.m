@@ -356,6 +356,7 @@
 	
 	stoppedLoading = YES;
 	[rWebView stopLoading];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
 	if(!deviceIsTablet)
 		[self setupToolbar];
