@@ -192,7 +192,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	
-	[rWebView stopLoading];
+	[self stopLoading];
 	rWebView.delegate = nil;
 	rWebView = nil;
 	
