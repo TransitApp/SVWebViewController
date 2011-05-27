@@ -67,7 +67,7 @@
 			[self.view addSubview:navBar];
 			[navBar release];
 			
-			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissController)];
+			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
 
 			navItem = [[UINavigationItem alloc] initWithTitle:self.title];
 			navItem.leftBarButtonItem = doneButton;
@@ -91,7 +91,7 @@
 			[self.view addSubview:navBar];
 			[navBar release];
 			
-			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissController)];
+			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
 			
 			navItem = [[UINavigationItem alloc] initWithTitle:nil];
 			navItem.leftBarButtonItem = doneButton;
