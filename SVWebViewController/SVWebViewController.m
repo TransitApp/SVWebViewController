@@ -192,9 +192,10 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	
-	[self stopLoading];
 	rWebView.delegate = nil;
 	rWebView = nil;
+	
+	[self stopLoading];
 	
 	if(deviceIsTablet && self.navigationController) {
 		[UIView animateWithDuration:0.3 animations:^{
