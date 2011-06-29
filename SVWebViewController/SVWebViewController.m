@@ -286,6 +286,17 @@
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpace.width = 5;
     
+    BOOL shouldEnable = NO;
+    NSURLRequest *req = self.webView.request;
+    if (req) {
+        if (![req.URL.absoluteString isEqualToString:@""] && [req.URL.absoluteString rangeOfString:@".app"].location == NSNotFound) {
+            shouldEnable = YES;
+        }
+    }
+    if (shouldEnable)
+        actionBarButton.enabled = YES;
+	else 
+        actionBarButton.enabled = NO;
     
 	NSArray *newButtons = [NSArray arrayWithObjects:fixedSpace, backBarButton, flexSpace, forwardBarButton, flexSpace, refreshStopBarButton, flexSpace, actionBarButton, fixedSpace, nil];
 	[toolbar setItems:newButtons];
