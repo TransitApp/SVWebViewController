@@ -5,8 +5,8 @@ is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's i
 SVWebViewController features:
 
 * iPhone and iPad distinct UIs
-* landscape orientation support (iPad only)
-* back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Email this")
+* full landscape orientation support
+* back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Mail Link")
 * navbar auto-creation depending on how controller is presented (modaly or pushed in nav controller)
 * navbar title set to the currently visible web page
 * talks with @setNetworkActivityIndicatorVisible@

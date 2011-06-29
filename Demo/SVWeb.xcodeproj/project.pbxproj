@@ -12,9 +12,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */; };
-		2214589B13133B2700ED7D83 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2214589913133B2700ED7D83 /* SVWebViewController.m */; };
-		2214589C13133B2700ED7D83 /* SVWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2214589A13133B2700ED7D83 /* SVWebViewController.xib */; };
 		221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2214589F13133B3600ED7D83 /* MessageUI.framework */; };
+		221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */; };
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -29,10 +28,9 @@
 		1D6058910D05DD3D006BFB54 /* SVWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
-		2214589813133B2700ED7D83 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
-		2214589913133B2700ED7D83 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
-		2214589A13133B2700ED7D83 /* SVWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SVWebViewController.xib; sourceTree = "<group>"; };
 		2214589F13133B3600ED7D83 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* SVWeb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWeb_Prefix.pch; sourceTree = "<group>"; };
@@ -82,9 +80,8 @@
 		2214586C13132D3200ED7D83 /* SVWebViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2214589813133B2700ED7D83 /* SVWebViewController.h */,
-				2214589913133B2700ED7D83 /* SVWebViewController.m */,
-				2214589A13133B2700ED7D83 /* SVWebViewController.xib */,
+				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
+				221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */,
 				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
 			);
 			name = SVWebViewController;
@@ -103,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				2214586C13132D3200ED7D83 /* SVWebViewController */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				22473B9A133800DC00F497E6 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -177,6 +174,7 @@
 				French,
 				German,
 				en,
+				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -194,7 +192,6 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
-				2214589C13133B2700ED7D83 /* SVWebViewController.xib in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
 			);
@@ -210,7 +207,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* ViewController.m in Sources */,
-				2214589B13133B2700ED7D83 /* SVWebViewController.m in Sources */,
+				221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

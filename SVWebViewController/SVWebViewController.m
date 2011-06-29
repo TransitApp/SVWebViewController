@@ -33,18 +33,9 @@
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    [super initWithNibName:@"SVWebViewController" bundle:[NSBundle mainBundle]];
-    if (self) {
-       	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-            deviceIsTablet = YES; 
-    }
-    return self;
-}
-
 - (id)initWithAddress:(NSString*)string {
 	
-	self = [super initWithNibName:@"SVWebViewController" bundle:[NSBundle mainBundle]];
+	self = [super initWithNibName:nil bundle:[NSBundle mainBundle]];
 
 	self.urlString = string;
 	
@@ -55,6 +46,7 @@
 }
 
 - (void)viewDidLoad {
+    
 	[super viewDidLoad];
 	
 	CGRect deviceBounds = [[UIApplication sharedApplication] keyWindow].bounds;
@@ -73,7 +65,7 @@
 		
 		if(self.navigationController == nil) {
 			
-			UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
+            navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
             navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
 			[self.view addSubview:navBar];
 			[navBar release];
@@ -86,16 +78,21 @@
 			
 			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
 			[navItem release];
-			
-			self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-88);
-		}
+            
+            toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.bounds)-44, CGRectGetWidth(deviceBounds), 44)];
+            toolbar.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+            [self.view addSubview:toolbar];
+            [toolbar release];
+        }
+        
+        else {
+            navBar = self.navigationController.navigationBar;
+            toolbar = self.navigationController.toolbar;
+        }
 	}
 	
 	else {
-		
-		[toolbar removeFromSuperview];
-		UINavigationBar *navBar;
-		
+				
 		if(self.navigationController == nil) {
 			
 			navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
@@ -116,7 +113,9 @@
 		}
 		
 		else {
+            self.hidesBottomBarWhenPushed = YES;
 			self.title = nil;
+            
 			navBar = self.navigationController.navigationBar;
 			navBar.autoresizesSubviews = YES;
 			
@@ -174,15 +173,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:YES];
+    
+    if(!deviceIsTablet)
+        [self.navigationController setToolbarHidden:NO animated:YES];
 	
+    [self setupToolbar];
+	[self layoutSubviews];
+    
+    
+    if(self.modalViewController)
+        return;
+    
     if (self.urlString) {
         NSURL *searchURL = [NSURL URLWithString:self.urlString];
         [self.webView loadRequest:[NSURLRequest requestWithURL:searchURL]];
     }
-
-	[self setupToolbar];
-	
-	[self layoutSubviews];
 	
 	if(deviceIsTablet && self.navigationController) {
 		titleLabel.alpha = 0;
@@ -202,17 +207,15 @@
 }
 
 
-
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	
-	
-	[self stopLoading];
-    [self.webView removeFromSuperview];
-	self.webView.delegate = nil;
-	self.webView = nil;
-	
-	if(deviceIsTablet && self.navigationController) {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if(self.modalViewController)
+        return;
+    
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    
+    if(deviceIsTablet && self.navigationController) {
 		[UIView animateWithDuration:0.3 animations:^{
 			titleLabel.alpha = 0;
 			refreshStopButton.alpha = 0;
@@ -223,6 +226,20 @@
 	}
 }
 
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+    if(self.modalViewController)
+        return;
+    
+	[self stopLoading];
+    [self.webView removeFromSuperview];
+	self.webView.delegate = nil;
+	self.webView = nil;
+}
+
+
 #pragma mark -
 #pragma mark Layout Methods
 
@@ -232,11 +249,11 @@
 	if(self.navigationController && deviceIsTablet)
 		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds));
 	else if(deviceIsTablet)
-		self.webView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
+		self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-CGRectGetMaxY(navBar.frame));
 	else if(self.navigationController && !deviceIsTablet)
-		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
+		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetMaxY(self.view.bounds));
 	else if(!deviceIsTablet)
-		self.webView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-88);
+		self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-CGRectGetMaxY(navBar.frame));
 	
 	backButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-180, 0, 44, 44);
 	forwardButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-120, 0, 44, 44);
@@ -286,16 +303,11 @@
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpace.width = 5;
     
-    BOOL shouldEnable = NO;
     NSURLRequest *req = self.webView.request;
-    if (req) {
-        if (![req.URL.absoluteString isEqualToString:@""] && [req.URL.absoluteString rangeOfString:@".app"].location == NSNotFound) {
-            shouldEnable = YES;
-        }
-    }
-    if (shouldEnable)
+    
+    if(req && ![req.URL.absoluteString isEqualToString:@""] && [req.URL.absoluteString rangeOfString:@".app"].location == NSNotFound)
         actionBarButton.enabled = YES;
-	else 
+	else
         actionBarButton.enabled = NO;
     
 	NSArray *newButtons = [NSArray arrayWithObjects:fixedSpace, backBarButton, flexSpace, forwardBarButton, flexSpace, refreshStopBarButton, flexSpace, actionBarButton, fixedSpace, nil];
@@ -303,6 +315,7 @@
 	
 	[refreshStopBarButton release];
     [flexSpace release];
+    [fixedSpace release];
 	[sSeparator release];
 	[rSeparator release];
 }
@@ -353,16 +366,19 @@
 #pragma mark UIWebViewDelegate
 
 - (UIWebView*) webView {
+    
     if (!rWebView) {
-        rWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        rWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        rWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        rWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
         rWebView.delegate = self;
         rWebView.scalesPageToFit = YES;
-        [rWebView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:rWebView];
     }
+    
     return rWebView;
 }
+
+
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
 	stoppedLoading = NO;
@@ -413,13 +429,13 @@
 						  delegate: self 
 						  cancelButtonTitle: nil   
 						  destructiveButtonTitle: nil   
-						  otherButtonTitles: NSLocalizedString(@"open_in_safari", @"Open in Safari"), nil]; 
+						  otherButtonTitles: NSLocalizedString(@"Open in Safari", @"SVWebViewController"), nil]; 
 	
 	
 	if([MFMailComposeViewController canSendMail])
-		[actionSheet addButtonWithTitle:NSLocalizedString(@"Email", @"Email")];
+		[actionSheet addButtonWithTitle:NSLocalizedString(@"Email", @"SVWebViewController")];
 	
-	[actionSheet addButtonWithTitle:NSLocalizedString(@"cancel",@"Cancel")];
+	[actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel",@"SVWebViewController")];
 	actionSheet.cancelButtonIndex = [actionSheet numberOfButtons]-1;
 	
 	if(!deviceIsTablet)
@@ -442,10 +458,10 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
-	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"open_in_safari", @"Open in Safari")])
+	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Open in Safari", @"SVWebViewController")])
 		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	
-	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Email", @"Email")]) {
+	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Email", @"SVWebViewController")]) {
 		
 		MFMailComposeViewController *emailComposer = [[MFMailComposeViewController alloc] init]; 
 		
@@ -453,10 +469,7 @@
         NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 		[emailComposer setSubject:title];
         
-        NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
-        NSString *appURL = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"AppId"]];
-		[emailComposer setMessageBody:
-		 [NSString stringWithFormat:@"<a href='%@'>%@</a><br/><br/>Shared from <a href='%@'>%@</a>", self.webView.request.URL.absoluteString, title, appURL, appName ] isHTML:YES];
+  		[emailComposer setMessageBody:self.webView.request.URL.absoluteString isHTML:NO];
         
 		emailComposer.modalPresentationStyle = UIModalPresentationFormSheet;
 		

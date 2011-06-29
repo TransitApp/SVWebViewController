@@ -13,14 +13,16 @@
 	
 	// iPhone UI
 	UINavigationItem *navItem;
-	IBOutlet UIBarButtonItem *backBarButton, *forwardBarButton, *refreshStopBarButton, *actionBarButton;
-	IBOutlet UIToolbar *toolbar;
+	UIBarButtonItem *backBarButton, *forwardBarButton, *refreshStopBarButton, *actionBarButton;
 	CGFloat separatorWidth, buttonWidth;
 	
 	// iPad UI
 	UIButton *backButton, *forwardButton, *refreshStopButton, *actionButton;
 	UILabel *titleLabel;
 	CGFloat titleLeftOffset;
+
+    UINavigationBar *navBar;
+    UIToolbar *toolbar;
 	
 	BOOL deviceIsTablet, stoppedLoading;
 }
