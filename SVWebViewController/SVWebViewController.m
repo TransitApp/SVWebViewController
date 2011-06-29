@@ -33,6 +33,15 @@
     [super dealloc];
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    [super initWithNibName:@"SVWebViewController" bundle:[NSBundle mainBundle]];
+    if (self) {
+       	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+            deviceIsTablet = YES; 
+    }
+    return self;
+}
+
 - (id)initWithAddress:(NSString*)string {
 	
 	self = [super initWithNibName:@"SVWebViewController" bundle:[NSBundle mainBundle]];
@@ -65,6 +74,7 @@
 		if(self.navigationController == nil) {
 			
 			UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
+            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
 			[self.view addSubview:navBar];
 			[navBar release];
 			
@@ -89,6 +99,7 @@
 		if(self.navigationController == nil) {
 			
 			navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
+            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
 			[self.view addSubview:navBar];
 			[navBar release];
 			
@@ -269,11 +280,18 @@
 	UIBarButtonItem *rSeparator = [[UIBarButtonItem alloc] initWithCustomView:nil];
 	rSeparator.width = separatorWidth;
 	rSeparator.enabled = NO;
-	
-	NSArray *newButtons = [NSArray arrayWithObjects:backBarButton, rSeparator, forwardBarButton, rSeparator, refreshStopBarButton, sSeparator, actionBarButton, nil];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 5;
+    
+    
+	NSArray *newButtons = [NSArray arrayWithObjects:fixedSpace, backBarButton, flexSpace, forwardBarButton, flexSpace, refreshStopBarButton, flexSpace, actionBarButton, fixedSpace, nil];
 	[toolbar setItems:newButtons];
 	
 	[refreshStopBarButton release];
+    [flexSpace release];
 	[sSeparator release];
 	[rSeparator release];
 }
