@@ -20,6 +20,7 @@
 
 @implementation SVWebViewController
 
+@synthesize webView = rWebView;
 @synthesize urlString;
 
 - (void)dealloc {
@@ -53,10 +54,10 @@
 		separatorWidth = 50;
 		buttonWidth = 18;
 		
-		backBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goBack)];
+		backBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goBack)];
 		backBarButton.width = buttonWidth;
 		
-		forwardBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:rWebView action:@selector(goForward)];
+		forwardBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goForward)];
 		forwardBarButton.width = buttonWidth;
 		
 		actionBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions)];
@@ -76,7 +77,7 @@
 			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
 			[navItem release];
 			
-			rWebView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-88);
+			self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-88);
 		}
 	}
 	
@@ -116,7 +117,7 @@
 		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[backButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/back"] forState:UIControlStateNormal];
 		backButton.frame = CGRectZero;
-		[backButton addTarget:rWebView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+		[backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 		backButton.adjustsImageWhenHighlighted = NO;
 		backButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
 		backButton.showsTouchWhenHighlighted = YES;
@@ -124,7 +125,7 @@
 		forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[forwardButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/forward"] forState:UIControlStateNormal];
 		forwardButton.frame = CGRectZero;
-		[forwardButton addTarget:rWebView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+		[forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
 		forwardButton.adjustsImageWhenHighlighted = NO;
 		forwardButton.showsTouchWhenHighlighted = YES;
 		
@@ -163,8 +164,10 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:YES];
 	
-	NSURL *searchURL = [NSURL URLWithString:self.urlString];
-	[rWebView loadRequest:[NSURLRequest requestWithURL:searchURL]];
+    if (self.urlString) {
+        NSURL *searchURL = [NSURL URLWithString:self.urlString];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:searchURL]];
+    }
 
 	[self setupToolbar];
 	
@@ -192,10 +195,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	
-	rWebView.delegate = nil;
-	rWebView = nil;
 	
 	[self stopLoading];
+    [self.webView removeFromSuperview];
+	self.webView.delegate = nil;
+	self.webView = nil;
 	
 	if(deviceIsTablet && self.navigationController) {
 		[UIView animateWithDuration:0.3 animations:^{
@@ -215,13 +219,13 @@
 	CGRect deviceBounds = self.view.bounds;
 
 	if(self.navigationController && deviceIsTablet)
-		rWebView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds));
+		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds));
 	else if(deviceIsTablet)
-		rWebView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
+		self.webView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
 	else if(self.navigationController && !deviceIsTablet)
-		rWebView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
+		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-44);
 	else if(!deviceIsTablet)
-		rWebView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-88);
+		self.webView.frame = CGRectMake(0, 44, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds)-88);
 	
 	backButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-180, 0, 44, 44);
 	forwardButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-120, 0, 44, 44);
@@ -234,16 +238,16 @@
 - (void)setupToolbar {
 	
 	if(self.navigationController != nil)
-		self.navigationItem.title = [rWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+		self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	else
-		navItem.title = [rWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+		navItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	
-	if(![rWebView canGoBack])
+	if(![self.webView canGoBack])
 		backBarButton.enabled = NO;
 	else
 		backBarButton.enabled = YES;
 	
-	if(![rWebView canGoForward])
+	if(![self.webView canGoForward])
 		forwardBarButton.enabled = NO;
 	else
 		forwardBarButton.enabled = YES;
@@ -251,13 +255,13 @@
 	UIBarButtonItem *sSeparator = [[UIBarButtonItem alloc] initWithCustomView:nil];
 	sSeparator.enabled = NO;
 		
-	if(rWebView.loading && !stoppedLoading) {
+	if(self.webView.loading && !stoppedLoading) {
 		refreshStopBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopLoading)];
 		sSeparator.width = separatorWidth+4;
 	}
 	
 	else {
-		refreshStopBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:rWebView action:@selector(reload)];
+		refreshStopBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.webView action:@selector(reload)];
 		sSeparator.width = separatorWidth+3;
 	}
 	
@@ -277,27 +281,27 @@
 
 - (void)setupTabletToolbar {
 	
-	titleLabel.text = [rWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+	titleLabel.text = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	
-	if(![rWebView canGoBack])
+	if(![self.webView canGoBack])
 		backButton.enabled = NO;
 	else
 		backButton.enabled = YES;
 	
-	if(![rWebView canGoForward])
+	if(![self.webView canGoForward])
 		forwardButton.enabled = NO;
 	else
 		forwardButton.enabled = YES;
 	
-	if(rWebView.loading && !stoppedLoading) {
-		[refreshStopButton removeTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+	if(self.webView.loading && !stoppedLoading) {
+		[refreshStopButton removeTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton addTarget:self action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/stop"] forState:UIControlStateNormal];
 	}
 	
 	else {
 		[refreshStopButton removeTarget:self action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
-		[refreshStopButton addTarget:rWebView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+		[refreshStopButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 		[refreshStopButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/refresh"] forState:UIControlStateNormal];
 	}
 }
@@ -308,10 +312,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	
-	if(deviceIsTablet)
-		return YES;
-	
-	return NO;
+	return YES;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
@@ -322,6 +323,17 @@
 #pragma mark -
 #pragma mark UIWebViewDelegate
 
+- (UIWebView*) webView {
+    if (!rWebView) {
+        rWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        rWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        rWebView.delegate = self;
+        rWebView.scalesPageToFit = YES;
+        [rWebView setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:rWebView];
+    }
+    return rWebView;
+}
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
 	stoppedLoading = NO;
@@ -356,7 +368,7 @@
 - (void)stopLoading {
 	
 	stoppedLoading = YES;
-	[rWebView stopLoading];
+	[self.webView stopLoading];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
 	if(!deviceIsTablet)
@@ -402,15 +414,21 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
 	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Open in Safari"])
-		[[UIApplication sharedApplication] openURL:rWebView.request.URL];
+		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	
 	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Email this"]) {
 		
 		MFMailComposeViewController *emailComposer = [[MFMailComposeViewController alloc] init]; 
 		
 		[emailComposer setMailComposeDelegate: self]; 
-		[emailComposer setSubject:[rWebView stringByEvaluatingJavaScriptFromString:@"document.title"]];
-		[emailComposer setMessageBody:rWebView.request.URL.absoluteString isHTML:NO];
+        NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+		[emailComposer setSubject:title];
+        
+        NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+        NSString *appURL = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"AppId"]];
+		[emailComposer setMessageBody:
+		 [NSString stringWithFormat:@"<a href='%@'>%@</a><br/><br/>Shared from <a href='%@'>%@</a>", self.webView.request.URL.absoluteString, title, appURL, appName ] isHTML:YES];
+        
 		emailComposer.modalPresentationStyle = UIModalPresentationFormSheet;
 		
 		[self presentModalViewController:emailComposer animated:YES];

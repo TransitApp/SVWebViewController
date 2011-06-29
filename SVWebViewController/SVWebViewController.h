@@ -9,7 +9,7 @@
 
 
 @interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
-	IBOutlet UIWebView *rWebView;
+	UIWebView *rWebView;
 	
 	// iPhone UI
 	UINavigationItem *navItem;
@@ -25,6 +25,7 @@
 	BOOL deviceIsTablet, stoppedLoading;
 }
 
+@property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSString *urlString;
 
 - (id)initWithAddress:(NSString*)string;
