@@ -71,7 +71,7 @@
 			[navBar release];
 			
 			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
-
+            
 			navItem = [[UINavigationItem alloc] initWithTitle:self.title];
 			navItem.leftBarButtonItem = doneButton;
 			[doneButton release];
@@ -255,6 +255,11 @@
 	else if(!deviceIsTablet)
 		self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-CGRectGetMaxY(navBar.frame));
 	
+    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 32);
+    else if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 44);
+        
 	backButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-180, 0, 44, 44);
 	forwardButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-120, 0, 44, 44);
 	actionButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-60, 0, 44, 44);
