@@ -22,7 +22,7 @@
 
 - (void)presentWebViewController {
 	
-	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://wikipedia.org"];
+	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
 	[self presentModalViewController:webViewController animated:YES];	
 	[webViewController release];

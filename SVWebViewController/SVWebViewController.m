@@ -246,6 +246,11 @@
 - (void)layoutSubviews {
 	CGRect deviceBounds = self.view.bounds;
 
+    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 32);
+    else if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 44);
+    
 	if(self.navigationController && deviceIsTablet)
 		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds));
 	else if(deviceIsTablet)
@@ -254,11 +259,6 @@
 		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetMaxY(self.view.bounds));
 	else if(!deviceIsTablet)
 		self.webView.frame = CGRectMake(0, CGRectGetMaxY(navBar.frame), CGRectGetWidth(deviceBounds), CGRectGetMinY(toolbar.frame)-CGRectGetMaxY(navBar.frame));
-	
-    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
-        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 32);
-    else if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
-        navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 44);
         
 	backButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-180, 0, 44, 44);
 	forwardButton.frame = CGRectMake(CGRectGetWidth(deviceBounds)-120, 0, 44, 44);
@@ -438,7 +438,7 @@
 	
 	
 	if([MFMailComposeViewController canSendMail])
-		[actionSheet addButtonWithTitle:NSLocalizedString(@"Email", @"SVWebViewController")];
+		[actionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"SVWebViewController")];
 	
 	[actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel",@"SVWebViewController")];
 	actionSheet.cancelButtonIndex = [actionSheet numberOfButtons]-1;
@@ -466,7 +466,7 @@
 	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Open in Safari", @"SVWebViewController")])
 		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	
-	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Email", @"SVWebViewController")]) {
+	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"SVWebViewController")]) {
 		
 		MFMailComposeViewController *emailComposer = [[MFMailComposeViewController alloc] init]; 
 		
