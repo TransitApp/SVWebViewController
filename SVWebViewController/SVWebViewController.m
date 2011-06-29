@@ -402,13 +402,13 @@
 						  delegate: self 
 						  cancelButtonTitle: nil   
 						  destructiveButtonTitle: nil   
-						  otherButtonTitles: @"Open in Safari", nil]; 
+						  otherButtonTitles: NSLocalizedString(@"open_in_safari", @"Open in Safari"), nil]; 
 	
 	
 	if([MFMailComposeViewController canSendMail])
-		[actionSheet addButtonWithTitle:@"Email this"];
+		[actionSheet addButtonWithTitle:NSLocalizedString(@"Email", @"Email")];
 	
-	[actionSheet addButtonWithTitle:@"Cancel"];
+	[actionSheet addButtonWithTitle:NSLocalizedString(@"cancel",@"Cancel")];
 	actionSheet.cancelButtonIndex = [actionSheet numberOfButtons]-1;
 	
 	if(!deviceIsTablet)
@@ -431,10 +431,10 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
-	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Open in Safari"])
+	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"open_in_safari", @"Open in Safari")])
 		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	
-	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Email this"]) {
+	else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Email", @"Email")]) {
 		
 		MFMailComposeViewController *emailComposer = [[MFMailComposeViewController alloc] init]; 
 		
