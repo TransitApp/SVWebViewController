@@ -52,9 +52,11 @@
 	if(!deviceIsTablet) {
 
 		backBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goBack)];
+        backBarButton.imageInsets = UIEdgeInsetsMake(2, 0, -2, 0);
 		backBarButton.width = 18;
 		
 		forwardBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goForward)];
+        forwardBarButton.imageInsets = UIEdgeInsetsMake(2, 0, -2, 0);
 		forwardBarButton.width = 18;
 		
 		actionBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions)];
