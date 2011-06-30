@@ -10,19 +10,17 @@
 
 @interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 	UIWebView *rWebView;
-	
+    UINavigationBar *navBar;
+    UIToolbar *toolbar;
+    
 	// iPhone UI
 	UINavigationItem *navItem;
 	UIBarButtonItem *backBarButton, *forwardBarButton, *refreshStopBarButton, *actionBarButton;
-	CGFloat separatorWidth, buttonWidth;
 	
 	// iPad UI
 	UIButton *backButton, *forwardButton, *refreshStopButton, *actionButton;
 	UILabel *titleLabel;
 	CGFloat titleLeftOffset;
-
-    UINavigationBar *navBar;
-    UIToolbar *toolbar;
 	
 	BOOL deviceIsTablet, stoppedLoading;
 }
