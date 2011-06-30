@@ -69,15 +69,14 @@
             navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
 			[self.view addSubview:navBar];
 			[navBar release];
-			
-			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
             
 			navItem = [[UINavigationItem alloc] initWithTitle:self.title];
-			navItem.leftBarButtonItem = doneButton;
-			[doneButton release];
-			
 			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
 			[navItem release];
+            
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
+			navItem.leftBarButtonItem = doneButton;
+            [doneButton release];
             
             toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.bounds)-44, CGRectGetWidth(deviceBounds), 44)];
             toolbar.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
