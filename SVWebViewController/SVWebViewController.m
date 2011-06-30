@@ -308,9 +308,7 @@
 	NSArray *newButtons = [NSArray arrayWithObjects:fixedSpace, backBarButton, flexSpace, forwardBarButton, flexSpace, refreshStopBarButton, flexSpace, actionBarButton, fixedSpace, nil];
 	[toolbar setItems:newButtons];
     [toolbar sizeToFit];
-    
-    NSLog(@"toolbar frame is %@", NSStringFromCGRect(toolbar.frame));
-	
+    	
 	[refreshStopBarButton release];
     [flexSpace release];
     [fixedSpace release];
