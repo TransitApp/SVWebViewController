@@ -58,21 +58,17 @@
 		forwardBarButton.width = 18;
 		
 		actionBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions)];
-		
+        
 		if(self.navigationController == nil) {
 			
             navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
-            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
+            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
 			[self.view addSubview:navBar];
 			[navBar release];
             
 			navItem = [[UINavigationItem alloc] initWithTitle:self.title];
 			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
 			[navItem release];
-            
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
-			navItem.leftBarButtonItem = doneButton;
-            [doneButton release];
             
             toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.bounds)-44, CGRectGetWidth(deviceBounds), 44)];
             toolbar.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
@@ -241,10 +237,13 @@
 - (void)layoutSubviews {
 	CGRect deviceBounds = self.view.bounds;
 
-    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController) {
         navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 32);
-    else if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController)
+        toolbar.frame = CGRectMake(0, CGRectGetHeight(deviceBounds)-32, CGRectGetWidth(deviceBounds), 32);
+    } else if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && !deviceIsTablet && !self.navigationController) {
         navBar.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), 44);
+        toolbar.frame = CGRectMake(0, CGRectGetHeight(deviceBounds)-44, CGRectGetWidth(deviceBounds), 44);
+    }
     
 	if(self.navigationController && deviceIsTablet)
 		self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(deviceBounds), CGRectGetHeight(deviceBounds));
@@ -265,6 +264,12 @@
 
 - (void)setupToolbar {
 	
+    if(!navItem.leftBarButtonItem) {
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
+        [navItem setLeftBarButtonItem:doneButton animated:YES];
+        [doneButton release];
+    }
+    
 	if(self.navigationController != nil)
 		self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	else
@@ -300,6 +305,9 @@
     
 	NSArray *newButtons = [NSArray arrayWithObjects:fixedSpace, backBarButton, flexSpace, forwardBarButton, flexSpace, refreshStopBarButton, flexSpace, actionBarButton, fixedSpace, nil];
 	[toolbar setItems:newButtons];
+    [toolbar sizeToFit];
+    
+    NSLog(@"toolbar frame is %@", NSStringFromCGRect(toolbar.frame));
 	
 	[refreshStopBarButton release];
     [flexSpace release];
