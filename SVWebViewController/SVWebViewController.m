@@ -221,14 +221,20 @@
 #pragma mark UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Open in Safari", @"")]) {
+	NSString *title = nil;
+    
+    @try {
+        title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    }
+    @catch (NSException *exception) { }
+    
+	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")]) {
         [[UIApplication sharedApplication] openURL:self.webView.request.URL];
-    } else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
+    } else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
 		MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         
 		mailViewController.mailComposeDelegate = self;
-        mailViewController.subject = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        [mailViewController setSubject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
   		[mailViewController setMessageBody:self.webView.request.URL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
