@@ -21,9 +21,9 @@
 #pragma mark - Initialization
 
 - (id)initWithURL:(NSURL *)URL {
-    SVWebViewController *webViewController = [[[SVWebViewController alloc] initWithURL:URL] autorelease];
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
     if (self = [super initWithRootViewController:webViewController]) {
-        webViewController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClicked:)] autorelease];
+        webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClicked:)];
     }
     return self;
 }

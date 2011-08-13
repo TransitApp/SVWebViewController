@@ -18,10 +18,10 @@
 
 @interface SVModalWebViewController : UINavigationController {
 @private
-    id<SVModalWebViewControllerDelegate> _webDelegate;
+    id<SVModalWebViewControllerDelegate> __unsafe_unretained _webDelegate;
 }
 
-@property (nonatomic, assign) id<SVModalWebViewControllerDelegate> webDelegate;
+@property (nonatomic, unsafe_unretained) id<SVModalWebViewControllerDelegate> webDelegate;
 
 - (id)initWithURL:(NSURL *)URL;
 

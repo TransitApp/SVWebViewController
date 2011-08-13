@@ -16,7 +16,6 @@
     NSURL *URL = [NSURL URLWithString:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
 	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
 	[self.navigationController pushViewController:webViewController animated:YES];
-	[webViewController release];
 }
 
 
@@ -26,7 +25,6 @@
     webViewController.webDelegate = self;
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
 	[self presentModalViewController:webViewController animated:YES];	
-	[webViewController release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
