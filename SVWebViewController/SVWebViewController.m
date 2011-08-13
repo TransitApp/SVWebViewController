@@ -42,10 +42,7 @@
 }
 
 - (void)viewDidLoad {
-    
 	[super viewDidLoad];
-	
-	CGRect deviceBounds = [[UIApplication sharedApplication] keyWindow].bounds;
 	
 	if(!deviceIsTablet) {
 
@@ -59,61 +56,20 @@
 		
 		actionBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions)];
         
-		if(self.navigationController == nil) {
-			
-            navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
-            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
-			[self.view addSubview:navBar];
-			[navBar release];
-            
-			navItem = [[UINavigationItem alloc] initWithTitle:self.title];
-			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
-			[navItem release];
-            
-            toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.bounds)-44, CGRectGetWidth(deviceBounds), 44)];
-            toolbar.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-            [self.view addSubview:toolbar];
-            [toolbar release];
-        }
-        
-        else {
-            navBar = self.navigationController.navigationBar;
-            toolbar = self.navigationController.toolbar;
-        }
+		navBar = self.navigationController.navigationBar;
+        toolbar = self.navigationController.toolbar;
 	}
 	
 	else {
-				
-		if(self.navigationController == nil) {
-			
-			navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,CGRectGetWidth(deviceBounds),44)];
-            navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
-			[self.view addSubview:navBar];
-			[navBar release];
-			
-			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
-			
-			navItem = [[UINavigationItem alloc] initWithTitle:nil];
-			navItem.leftBarButtonItem = doneButton;
-			[doneButton release];
-			
-			[navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
-			[navItem release];
-			
-			titleLeftOffset = [@"Done" sizeWithFont:[UIFont boldSystemFontOfSize:12]].width+33;
-		}
-		
-		else {
-            self.hidesBottomBarWhenPushed = YES;
-			self.title = nil;
-            
-			navBar = self.navigationController.navigationBar;
-			navBar.autoresizesSubviews = YES;
-			
-			NSArray* viewCtrlers = self.navigationController.viewControllers;
-			UIViewController* prevCtrler = [viewCtrlers objectAtIndex:[viewCtrlers count]-2];
-			titleLeftOffset = [prevCtrler.navigationItem.backBarButtonItem.title sizeWithFont:[UIFont boldSystemFontOfSize:12]].width+26;
-		}
+        self.hidesBottomBarWhenPushed = YES;
+        self.title = nil;
+        
+        navBar = self.navigationController.navigationBar;
+        navBar.autoresizesSubviews = YES;
+        
+        NSArray* viewCtrlers = self.navigationController.viewControllers;
+        UIViewController* prevCtrler = [viewCtrlers objectAtIndex:[viewCtrlers count]-2];
+        titleLeftOffset = [prevCtrler.navigationItem.backBarButtonItem.title sizeWithFont:[UIFont boldSystemFontOfSize:12]].width+26;
 		
 		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[backButton setBackgroundImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPad/back"] forState:UIControlStateNormal];
@@ -260,12 +216,6 @@
 
 
 - (void)setupToolbar {
-	
-    if(!navItem.leftBarButtonItem) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissController)];
-        [navItem setLeftBarButtonItem:doneButton animated:YES];
-        [doneButton release];
-    }
     
 	if(self.navigationController != nil)
 		self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -435,11 +385,6 @@
 		[actionSheet showFromRect:CGRectOffset(actionButton.frame, 0, -49) inView:self.view animated:YES];
 		
 	[actionSheet release];
-}
-
-
-- (void)dismissController {
-	[self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -
