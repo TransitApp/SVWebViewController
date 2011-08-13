@@ -19,6 +19,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* ViewController.m */; };
 		28F335F11007B36200424DE2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* ViewController.xib */; };
+		A786CF7F13F6DCC600E22E13 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A786CF7E13F6DCC600E22E13 /* SVModalWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		28F335F01007B36200424DE2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ViewController.xib; path = ../ViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SVWeb-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SVWeb-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A786CF7D13F6DCC600E22E13 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		A786CF7E13F6DCC600E22E13 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 		2214586C13132D3200ED7D83 /* SVWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A786CF7D13F6DCC600E22E13 /* SVModalWebViewController.h */,
+				A786CF7E13F6DCC600E22E13 /* SVModalWebViewController.m */,
 				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
 				221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */,
 				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
@@ -208,6 +213,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* ViewController.m in Sources */,
 				221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */,
+				A786CF7F13F6DCC600E22E13 /* SVModalWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
