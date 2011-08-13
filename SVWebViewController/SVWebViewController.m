@@ -19,7 +19,7 @@
 @implementation SVWebViewController
 
 @synthesize webView = rWebView;
-@synthesize urlString;
+@synthesize URL;
 
 - (void)dealloc {
 	navItem = nil;
@@ -27,20 +27,18 @@
 	[backBarButton release];
 	[forwardBarButton release];
 	[actionBarButton release];
+    [URL release];
 	
     [super dealloc];
 }
 
-- (id)initWithAddress:(NSString*)string {
-	
-	self = [super initWithNibName:nil bundle:[NSBundle mainBundle]];
-
-	self.urlString = string;
-	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-		deviceIsTablet = YES;
-	
-	return self;
+- (id)initWithURL:(NSURL *)aURL {
+    if (self = [super init]) {
+        self.URL = aURL;
+        
+        deviceIsTablet = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -177,10 +175,7 @@
     if(self.modalViewController)
         return;
     
-    if (self.urlString) {
-        NSURL *searchURL = [NSURL URLWithString:self.urlString];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:searchURL]];
-    }
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
 	
 	if(deviceIsTablet && self.navigationController) {
 		titleLabel.alpha = 0;

@@ -23,11 +23,13 @@
 	CGFloat titleLeftOffset;
 	
 	BOOL deviceIsTablet, stoppedLoading;
+    
+    NSURL *URL;
 }
 
 @property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) NSString *urlString;
+@property (nonatomic, retain) NSURL *URL;
 
-- (id)initWithAddress:(NSString*)string;
+- (id)initWithURL:(NSURL *)URL;
 
 @end
