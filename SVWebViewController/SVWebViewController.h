@@ -9,28 +9,17 @@
 
 
 @interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
-    UINavigationBar *navBar;
-    UIToolbar *toolbar;
-	
-	// iPad UI
-	UIButton *backButton, *forwardButton, *refreshButton, *stopButton, *actionButton;
-	UILabel *titleLabel;
-	CGFloat titleLeftOffset;
-	
-	BOOL deviceIsTablet, stoppedLoading;
-    
     UIWebView *_webView;
     NSURL *_URL;
     
     UIBarButtonItem *_backBarButtonItem, *_forwardBarButtonItem, *_refreshBarButtonItem, *_stopBarButtonItem, *_actionBarButtonItem;
-    UIButton *_backButton, *_forwardButton, *_refreshButton, *_stopButton, *_actionButton;
 }
 
-@property (nonatomic, readonly) UIBarButtonItem *backBarButtonItem;
-@property (nonatomic, readonly) UIBarButtonItem *forwardBarButtonItem;
-@property (nonatomic, readonly) UIBarButtonItem *refreshBarButtonItem;
-@property (nonatomic, readonly) UIBarButtonItem *stopBarButtonItem;
-@property (nonatomic, readonly) UIBarButtonItem *actionBarButtonItem;
+@property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic, strong, readonly) UIBarButtonItem *forwardBarButtonItem;
+@property (nonatomic, strong, readonly) UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, strong, readonly) UIBarButtonItem *stopBarButtonItem;
+@property (nonatomic, strong, readonly) UIBarButtonItem *actionBarButtonItem;
 
 @property (nonatomic, strong, readonly) UIWebView *webView;
 @property (nonatomic, strong) NSURL *URL;
