@@ -21,6 +21,8 @@
 @synthesize webView = rWebView;
 @synthesize URL;
 
+#pragma mark - Memory management
+
 - (void)dealloc {
 	navItem = nil;
 	
@@ -32,6 +34,8 @@
     [super dealloc];
 }
 
+#pragma mark - initialization
+
 - (id)initWithURL:(NSURL *)aURL {
     if (self = [super init]) {
         self.URL = aURL;
@@ -39,6 +43,16 @@
         deviceIsTablet = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
     }
     return self;
+}
+
+#pragma mark - View lifecycle
+
+- (void)loadView {
+    self.webView = [[[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds ] autorelease];
+    self.webView.delegate = self;
+    self.webView.scalesPageToFit = YES;
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL] ];
+    self.view = self.webView;
 }
 
 - (void)viewDidLoad {
@@ -126,12 +140,6 @@
 	
     [self setupToolbar];
 	[self layoutSubviews];
-    
-    
-    if(self.modalViewController)
-        return;
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
 	
 	if(deviceIsTablet && self.navigationController) {
 		titleLabel.alpha = 0;
@@ -154,9 +162,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if(self.modalViewController)
-        return;
-    
     [self.navigationController setToolbarHidden:YES animated:YES];
     
     if(deviceIsTablet && self.navigationController) {
@@ -173,16 +178,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
-	
-    if(self.modalViewController)
-        return;
     
 	[self stopLoading];
-    [self.webView removeFromSuperview];
-	self.webView.delegate = nil;
-	self.webView = nil;
 }
-
 
 #pragma mark -
 #pragma mark Layout Methods
@@ -291,11 +289,6 @@
 #pragma mark -
 #pragma mark Orientation Support
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	
-	return YES;
-}
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
 	[self layoutSubviews];
 }
@@ -303,20 +296,6 @@
 
 #pragma mark -
 #pragma mark UIWebViewDelegate
-
-- (UIWebView*) webView {
-    
-    if (!rWebView) {
-        rWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-        rWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
-        rWebView.delegate = self;
-        rWebView.scalesPageToFit = YES;
-        [self.view addSubview:rWebView];
-    }
-    
-    return rWebView;
-}
-
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
