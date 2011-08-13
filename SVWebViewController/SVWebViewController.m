@@ -72,6 +72,13 @@
     return self;
 }
 
+#pragma mark - Memory management
+
+- (void)dealloc {
+    _webView.delegate = nil;
+    [self _stopClicked:nil];
+}
+
 #pragma mark - View lifecycle
 
 - (void)loadView {
