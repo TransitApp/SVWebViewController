@@ -76,7 +76,18 @@
 
 - (void)dealloc {
     _webView.delegate = nil;
+    [_webView release];
+    
+    [_URL release];
+    [_backBarButtonItem release];
+    [_forwardBarButtonItem release];
+    [_refreshBarButtonItem release];
+    [_stopBarButtonItem release];
+    [_actionBarButtonItem release];
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    [super dealloc];
 }
 
 #pragma mark - View lifecycle
@@ -92,6 +103,18 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self updateToolbarItems];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    [_webView release], _webView = nil;
+    
+    [_backBarButtonItem release], _backBarButtonItem = nil;
+    [_forwardBarButtonItem release], _forwardBarButtonItem = nil;
+    [_refreshBarButtonItem release], _refreshBarButtonItem = nil;
+    [_stopBarButtonItem release], _stopBarButtonItem = nil;
+    [_actionBarButtonItem release], _actionBarButtonItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -122,9 +145,9 @@
     
     UIBarButtonItem *refreshStopBarButtonItem = self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *fixedSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
     fixedSpace.width = 5.0f;
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         NSArray *items = [NSArray arrayWithObjects:
@@ -139,9 +162,9 @@
                           fixedSpace,
                           nil];
         
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 250.0f, 44.0f)];
+        UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 250.0f, 44.0f)] autorelease];
         toolbar.items = items;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
+        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:toolbar] autorelease];
     } else {
         NSArray *items = [NSArray arrayWithObjects:
                           fixedSpace,
@@ -202,12 +225,12 @@
 }
 
 - (void)_actionButtonClicked:(id)sender {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] 
+	UIActionSheet *actionSheet = [[[UIActionSheet alloc] 
                                    initWithTitle:nil
                                    delegate:self 
                                    cancelButtonTitle:nil   
                                    destructiveButtonTitle:nil   
-                                   otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil]; 
+                                   otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil] autorelease]; 
 	
 	
 	if([MFMailComposeViewController canSendMail]) {
@@ -238,7 +261,7 @@
 	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")]) {
         [[UIApplication sharedApplication] openURL:self.webView.request.URL];
     } else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
-		MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+		MFMailComposeViewController *mailViewController = [[[MFMailComposeViewController alloc] init] autorelease];
         
 		mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];

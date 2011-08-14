@@ -15,14 +15,14 @@
     UIBarButtonItem *_backBarButtonItem, *_forwardBarButtonItem, *_refreshBarButtonItem, *_stopBarButtonItem, *_actionBarButtonItem;
 }
 
-@property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
-@property (nonatomic, strong, readonly) UIBarButtonItem *forwardBarButtonItem;
-@property (nonatomic, strong, readonly) UIBarButtonItem *refreshBarButtonItem;
-@property (nonatomic, strong, readonly) UIBarButtonItem *stopBarButtonItem;
-@property (nonatomic, strong, readonly) UIBarButtonItem *actionBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *forwardBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *stopBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *actionBarButtonItem;
 
-@property (nonatomic, strong, readonly) UIWebView *webView;
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, retain, readonly) UIWebView *webView;
+@property (nonatomic, retain) NSURL *URL;
 
 - (id)initWithURL:(NSURL *)URL;
 
