@@ -76,7 +76,7 @@
 
 - (void)dealloc {
     _webView.delegate = nil;
-    [self _stopClicked:nil];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 #pragma mark - View lifecycle
