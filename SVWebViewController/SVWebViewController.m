@@ -225,13 +225,17 @@
 }
 
 - (void)_actionButtonClicked:(id)sender {
+    if (_actionSheet) {
+        // we are already showing an actionSheet, return
+        return;
+    }
 	UIActionSheet *actionSheet = [[[UIActionSheet alloc] 
                                    initWithTitle:nil
                                    delegate:self 
                                    cancelButtonTitle:nil   
                                    destructiveButtonTitle:nil   
                                    otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil] autorelease]; 
-	
+	_actionSheet = actionSheet;
 	
 	if([MFMailComposeViewController canSendMail]) {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
@@ -252,6 +256,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	NSString *title = nil;
+    _actionSheet = nil;
     
     @try {
         title = [actionSheet buttonTitleAtIndex:buttonIndex];

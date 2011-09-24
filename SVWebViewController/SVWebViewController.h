@@ -12,6 +12,7 @@
     UIWebView *_webView;
     NSURL *_URL;
     
+    UIActionSheet *_actionSheet;
     UIBarButtonItem *_backBarButtonItem, *_forwardBarButtonItem, *_refreshBarButtonItem, *_stopBarButtonItem, *_actionBarButtonItem;
 }
 
