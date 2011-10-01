@@ -141,7 +141,7 @@ NSString *const SVWebViewControllerURLKey = @"URL";
         return YES;
     }
     
-    return !toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+    return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
 #pragma mark - Toolbar
