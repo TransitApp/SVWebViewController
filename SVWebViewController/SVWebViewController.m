@@ -6,6 +6,9 @@
 //
 
 #import "SVWebViewController.h"
+#import <objc/runtime.h>
+
+NSString *const SVWebViewControllerURLKey = @"URL";
 
 @interface SVWebViewController ()
 
@@ -144,8 +147,9 @@
 #pragma mark - Toolbar
 
 - (void)updateToolbarItems {
-    self.backBarButtonItem.enabled = [self.webView canGoBack];
-    self.forwardBarButtonItem.enabled = [self.webView canGoForward];
+    self.backBarButtonItem.enabled = self.webView.canGoBack;
+    self.forwardBarButtonItem.enabled = self.webView.canGoForward;
+    self.actionBarButtonItem.enabled = !self.webView.isLoading;
     
     UIBarButtonItem *refreshStopBarButtonItem = self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     
@@ -233,13 +237,16 @@
         // we are already showing an actionSheet, return
         return;
     }
+    NSURL *pageURL = self.webView.request.URL;
+    
 	UIActionSheet *actionSheet = [[[UIActionSheet alloc] 
-                                   initWithTitle:nil
+                                   initWithTitle:pageURL.absoluteString
                                    delegate:self 
                                    cancelButtonTitle:nil   
                                    destructiveButtonTitle:nil   
                                    otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil] autorelease]; 
 	_actionSheet = actionSheet;
+    objc_setAssociatedObject(actionSheet, &SVWebViewControllerURLKey, pageURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	
 	if([MFMailComposeViewController canSendMail]) {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
@@ -267,14 +274,19 @@
     }
     @catch (NSException *exception) { }
     
+    NSURL *pageURL = objc_getAssociatedObject(actionSheet, &SVWebViewControllerURLKey);
+    if (!pageURL) {
+        return;
+    }
+    
 	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")]) {
-        [[UIApplication sharedApplication] openURL:self.webView.request.URL];
+        [[UIApplication sharedApplication] openURL:pageURL];
     } else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
 		MFMailComposeViewController *mailViewController = [[[MFMailComposeViewController alloc] init] autorelease];
         
 		mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
-  		[mailViewController setMessageBody:self.webView.request.URL.absoluteString isHTML:NO];
+  		[mailViewController setMessageBody:pageURL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
 		[self presentModalViewController:mailViewController animated:YES];
