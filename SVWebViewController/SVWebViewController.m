@@ -134,7 +134,11 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return YES;
+    }
+    
+    return !toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
 #pragma mark - Toolbar
