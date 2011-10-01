@@ -284,7 +284,10 @@
 #pragma mark -
 #pragma mark MFMailComposeViewControllerDelegate
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+- (void)mailComposeController:(MFMailComposeViewController *)controller 
+          didFinishWithResult:(MFMailComposeResult)result 
+                        error:(NSError *)error 
+{
 	[self dismissModalViewControllerAnimated:YES];
 }
 
