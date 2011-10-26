@@ -7,7 +7,6 @@ SVWebViewController features:
 * iPhone and iPad distinct UIs
 * full landscape orientation support
 * back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Mail Link")
-* navbar auto-creation depending on how controller is presented (modaly or pushed in nav controller)
 * navbar title set to the currently visible web page
 * talks with @setNetworkActivityIndicatorVisible@
 
@@ -31,10 +30,18 @@ SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAd
 [webViewController release];
 </pre>
 
-or be presented modally on top of the currently visible view controller:
+It can also be presented modally using @SVModalWebViewController@:
 
 <pre>
-SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:@"http://google.com"];
 [self presentModalViewController:webViewController animated:YES];	
 [webViewController release];
 </pre>
+
+h2. Automatic Referencing counting (ARC) support
+
+SVWebViewController doesn't support ARC. You can disable ARC on a per-file basis by adding the @-fno-objc-arc@ compiler flag for those files (see "this StackOverflow thread":http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project for reference). Anyone who loves ARC enough to add it to SVWebViewController is welcome to open a pull request and I'll be happy to create a new ARC branch.
+
+h2. Credits
+
+SVWebViewController is brought to you by "Sam Vermette":http://samvermette.com and "contributors to the project":https://github.com/samvermette/SVWebViewController/contributors. If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by "creating new issues":https://github.com/samvermette/SVWebViewController/issues/new. If you're using SVWebViewController in your project, attribution would be nice.

@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SVModalWebViewController.h"
 
-@interface ViewController : UIViewController <SVModalWebViewControllerDelegate> {
-	
-}
+@interface ViewController : UIViewController
 
 - (IBAction)pushWebViewController;
 - (IBAction)presentWebViewController;

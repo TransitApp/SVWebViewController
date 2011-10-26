@@ -4,89 +4,128 @@
 //  Created by Sam Vermette on 08.11.10.
 //  Copyright 2010 Sam Vermette. All rights reserved.
 //
+//  https://github.com/samvermette/SVWebViewController
 
 #import "SVWebViewController.h"
-#import <objc/runtime.h>
-
-NSString *const SVWebViewControllerURLKey = @"URL";
 
 @interface SVWebViewController ()
 
+@property (nonatomic, retain, readonly) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *forwardBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *stopBarButtonItem;
+@property (nonatomic, retain, readonly) UIBarButtonItem *actionBarButtonItem;
+@property (nonatomic, retain, readonly) UIActionSheet *pageActionSheet;
+
+@property (nonatomic, retain, readonly) UIWebView *mainWebView;
+@property (nonatomic, retain) NSURL *URL;
+
+- (id)initWithAddress:(NSString*)urlString;
+- (id)initWithURL:(NSURL*)URL;
+
 - (void)updateToolbarItems;
 
-- (void)_goBackClicked:(UIBarButtonItem *)sender;
-- (void)_goForwardClicked:(UIBarButtonItem *)sender;
-- (void)_reloadClicked:(UIBarButtonItem *)sender;
-- (void)_stopClicked:(UIBarButtonItem *)sender;
-- (void)_actionButtonClicked:(UIBarButtonItem *)sender;
+- (void)goBackClicked:(UIBarButtonItem *)sender;
+- (void)goForwardClicked:(UIBarButtonItem *)sender;
+- (void)reloadClicked:(UIBarButtonItem *)sender;
+- (void)stopClicked:(UIBarButtonItem *)sender;
+- (void)actionButtonClicked:(UIBarButtonItem *)sender;
 
 @end
 
+
 @implementation SVWebViewController
-@synthesize URL=_URL, webView=_webView;
+
+@synthesize URL, mainWebView;
+@synthesize backBarButtonItem, forwardBarButtonItem, refreshBarButtonItem, stopBarButtonItem, actionBarButtonItem, pageActionSheet;
 
 #pragma mark - setters and getters
 
 - (UIBarButtonItem *)backBarButtonItem {
-    if (!_backBarButtonItem) {
-        _backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:self action:@selector(_goBackClicked:)];
-        _backBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
-		_backBarButtonItem.width = 18.0f;
+    
+    if (!backBarButtonItem) {
+        backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/back"] style:UIBarButtonItemStylePlain target:self action:@selector(goBackClicked:)];
+        backBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
+		backBarButtonItem.width = 18.0f;
     }
-    return _backBarButtonItem;
+    return backBarButtonItem;
 }
 
 - (UIBarButtonItem *)forwardBarButtonItem {
-    if (!_forwardBarButtonItem) {
-        _forwardBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:self action:@selector(_goForwardClicked:)];
-        _forwardBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
-		_forwardBarButtonItem.width = 18.0f;
+    
+    if (!forwardBarButtonItem) {
+        forwardBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/forward"] style:UIBarButtonItemStylePlain target:self action:@selector(goForwardClicked:)];
+        forwardBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
+		forwardBarButtonItem.width = 18.0f;
     }
-    return _forwardBarButtonItem;
+    return forwardBarButtonItem;
 }
 
 - (UIBarButtonItem *)refreshBarButtonItem {
-    if (!_refreshBarButtonItem) {
-        _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(_reloadClicked:)];
+    
+    if (!refreshBarButtonItem) {
+        refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadClicked:)];
     }
-    return _refreshBarButtonItem;
+    
+    return refreshBarButtonItem;
 }
 
 - (UIBarButtonItem *)stopBarButtonItem {
-    if (!_stopBarButtonItem) {
-        _stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(_stopClicked:)];
+    
+    if (!stopBarButtonItem) {
+        stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopClicked:)];
     }
-    return _stopBarButtonItem;
+    return stopBarButtonItem;
 }
 
 - (UIBarButtonItem *)actionBarButtonItem {
-    if (!_actionBarButtonItem) {
-        _actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(_actionButtonClicked:)];
+    
+    if (!actionBarButtonItem) {
+        actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonClicked:)];
     }
-    return _actionBarButtonItem;
+    return actionBarButtonItem;
 }
 
-#pragma mark - initialization
-
-- (id)initWithURL:(NSURL *)URL {
-    if (self = [super init]) {
-        self.URL = URL;
+- (UIActionSheet *)pageActionSheet {
+    
+    if(!pageActionSheet) {
+        pageActionSheet = [[UIActionSheet alloc] 
+                        initWithTitle:self.mainWebView.request.URL.absoluteString
+                        delegate:self 
+                        cancelButtonTitle:nil   
+                        destructiveButtonTitle:nil   
+                        otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil]; 
     }
+    
+    return pageActionSheet;
+}
+
+#pragma mark - Initialization
+
+- (id)initWithAddress:(NSString *)urlString {
+    return [self initWithURL:[NSURL URLWithString:urlString]];
+}
+
+- (id)initWithURL:(NSURL*)pageURL {
+    
+    if(self = [super init])
+        self.URL = pageURL;
+    
     return self;
 }
 
 #pragma mark - Memory management
 
 - (void)dealloc {
-    _webView.delegate = nil;
-    [_webView release];
+    mainWebView.delegate = nil;
+    [mainWebView release];
     
-    [_URL release];
-    [_backBarButtonItem release];
-    [_forwardBarButtonItem release];
-    [_refreshBarButtonItem release];
-    [_stopBarButtonItem release];
-    [_actionBarButtonItem release];
+    [URL release];
+    [backBarButtonItem release];
+    [forwardBarButtonItem release];
+    [refreshBarButtonItem release];
+    [stopBarButtonItem release];
+    [actionBarButtonItem release];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
@@ -96,11 +135,12 @@ NSString *const SVWebViewControllerURLKey = @"URL";
 #pragma mark - View lifecycle
 
 - (void)loadView {
-    _webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds ];
-    _webView.delegate = self;
-    _webView.scalesPageToFit = YES;
-    [_webView loadRequest:[NSURLRequest requestWithURL:self.URL] ];
-    self.view = _webView;
+    
+    mainWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    mainWebView.delegate = self;
+    mainWebView.scalesPageToFit = YES;
+    [mainWebView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+    self.view = mainWebView;
 }
 
 - (void)viewDidLoad {
@@ -111,16 +151,19 @@ NSString *const SVWebViewControllerURLKey = @"URL";
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    [_webView release], _webView = nil;
+    [mainWebView release], mainWebView = nil;
     
-    [_backBarButtonItem release], _backBarButtonItem = nil;
-    [_forwardBarButtonItem release], _forwardBarButtonItem = nil;
-    [_refreshBarButtonItem release], _refreshBarButtonItem = nil;
-    [_stopBarButtonItem release], _stopBarButtonItem = nil;
-    [_actionBarButtonItem release], _actionBarButtonItem = nil;
+    [backBarButtonItem release], backBarButtonItem = nil;
+    [forwardBarButtonItem release], forwardBarButtonItem = nil;
+    [refreshBarButtonItem release], refreshBarButtonItem = nil;
+    [stopBarButtonItem release], stopBarButtonItem = nil;
+    [actionBarButtonItem release], actionBarButtonItem = nil;
+    [pageActionSheet release], pageActionSheet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalViewController instead.");
+    
 	[super viewWillAppear:animated];
 	
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -137,9 +180,9 @@ NSString *const SVWebViewControllerURLKey = @"URL";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
-    }
     
     return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
@@ -147,11 +190,11 @@ NSString *const SVWebViewControllerURLKey = @"URL";
 #pragma mark - Toolbar
 
 - (void)updateToolbarItems {
-    self.backBarButtonItem.enabled = self.webView.canGoBack;
-    self.forwardBarButtonItem.enabled = self.webView.canGoForward;
-    self.actionBarButtonItem.enabled = !self.webView.isLoading;
+    self.backBarButtonItem.enabled = self.mainWebView.canGoBack;
+    self.forwardBarButtonItem.enabled = self.mainWebView.canGoForward;
+    self.actionBarButtonItem.enabled = !self.mainWebView.isLoading;
     
-    UIBarButtonItem *refreshStopBarButtonItem = self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
+    UIBarButtonItem *refreshStopBarButtonItem = self.mainWebView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     
     UIBarButtonItem *fixedSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
     fixedSpace.width = 5.0f;
@@ -173,7 +216,9 @@ NSString *const SVWebViewControllerURLKey = @"URL";
         UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 250.0f, 44.0f)] autorelease];
         toolbar.items = items;
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:toolbar] autorelease];
-    } else {
+    } 
+    
+    else {
         NSArray *items = [NSArray arrayWithObjects:
                           fixedSpace,
                           self.backBarButtonItem, 
@@ -213,84 +258,70 @@ NSString *const SVWebViewControllerURLKey = @"URL";
 
 #pragma mark - Target actions
 
-- (void)_goBackClicked:(UIBarButtonItem *)sender {
-    [_webView goBack];
+- (void)goBackClicked:(UIBarButtonItem *)sender {
+    [mainWebView goBack];
 }
 
-- (void)_goForwardClicked:(UIBarButtonItem *)sender {
-    [_webView goForward];
+- (void)goForwardClicked:(UIBarButtonItem *)sender {
+    [mainWebView goForward];
 }
 
-- (void)_reloadClicked:(UIBarButtonItem *)sender {
-    [_webView reload];
+- (void)reloadClicked:(UIBarButtonItem *)sender {
+    [mainWebView reload];
 }
 
-- (void)_stopClicked:(UIBarButtonItem *)sender {
-    [_webView stopLoading];
+- (void)stopClicked:(UIBarButtonItem *)sender {
+    [mainWebView stopLoading];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[self updateToolbarItems];
 }
 
-- (void)_actionButtonClicked:(id)sender {
-    if (_actionSheet) {
-        // we are already showing an actionSheet, return
-        return;
-    }
-    NSURL *pageURL = self.webView.request.URL;
+- (void)actionButtonClicked:(id)sender {
     
-	UIActionSheet *actionSheet = [[[UIActionSheet alloc] 
-                                   initWithTitle:pageURL.absoluteString
-                                   delegate:self 
-                                   cancelButtonTitle:nil   
-                                   destructiveButtonTitle:nil   
-                                   otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil] autorelease]; 
-	_actionSheet = actionSheet;
-    objc_setAssociatedObject(actionSheet, &SVWebViewControllerURLKey, pageURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if(pageActionSheet)
+        return;
+    
+	if([MFMailComposeViewController canSendMail])
+        [self.pageActionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
+
+	[self.pageActionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+	self.pageActionSheet.cancelButtonIndex = [self.pageActionSheet numberOfButtons]-1;
 	
-	if([MFMailComposeViewController canSendMail]) {
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
-    }
-	
-	[actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
-	actionSheet.cancelButtonIndex = [actionSheet numberOfButtons]-1;
-	
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [actionSheet showFromBarButtonItem:self.actionBarButtonItem animated:YES];
-    } else {
-        [actionSheet showFromToolbar:self.navigationController.toolbar];
-    }
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        [self.pageActionSheet showFromBarButtonItem:self.actionBarButtonItem animated:YES];
+    else
+        [self.pageActionSheet showFromToolbar:self.navigationController.toolbar];
+    
+    [pageActionSheet release];
+}
+
+- (void)doneButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -
 #pragma mark UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	NSString *title = nil;
-    _actionSheet = nil;
+	NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     
-    @try {
-        title = [actionSheet buttonTitleAtIndex:buttonIndex];
-    }
-    @catch (NSException *exception) { }
+	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")])
+        [[UIApplication sharedApplication] openURL:self.mainWebView.request.URL];
     
-    NSURL *pageURL = objc_getAssociatedObject(actionSheet, &SVWebViewControllerURLKey);
-    if (!pageURL) {
-        return;
-    }
-    
-	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")]) {
-        [[UIApplication sharedApplication] openURL:pageURL];
-    } else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
+    else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
+        
 		MFMailComposeViewController *mailViewController = [[[MFMailComposeViewController alloc] init] autorelease];
         
 		mailViewController.mailComposeDelegate = self;
-        [mailViewController setSubject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
-  		[mailViewController setMessageBody:pageURL.absoluteString isHTML:NO];
+        [mailViewController setSubject:[self.mainWebView stringByEvaluatingJavaScriptFromString:@"document.title"]];
+  		[mailViewController setMessageBody:self.mainWebView.request.URL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
 		[self presentModalViewController:mailViewController animated:YES];
 	}
+    
+    pageActionSheet = nil;
 }
 
 #pragma mark -

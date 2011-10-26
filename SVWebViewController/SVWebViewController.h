@@ -4,27 +4,15 @@
 //  Created by Sam Vermette on 08.11.10.
 //  Copyright 2010 Sam Vermette. All rights reserved.
 //
+//  https://github.com/samvermette/SVWebViewController
 
 #import <MessageUI/MessageUI.h>
 
+#import "SVModalWebViewController.h"
 
-@interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
-    UIWebView *_webView;
-    NSURL *_URL;
-    
-    UIActionSheet *_actionSheet;
-    UIBarButtonItem *_backBarButtonItem, *_forwardBarButtonItem, *_refreshBarButtonItem, *_stopBarButtonItem, *_actionBarButtonItem;
-}
+@interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, retain, readonly) UIBarButtonItem *backBarButtonItem;
-@property (nonatomic, retain, readonly) UIBarButtonItem *forwardBarButtonItem;
-@property (nonatomic, retain, readonly) UIBarButtonItem *refreshBarButtonItem;
-@property (nonatomic, retain, readonly) UIBarButtonItem *stopBarButtonItem;
-@property (nonatomic, retain, readonly) UIBarButtonItem *actionBarButtonItem;
-
-@property (nonatomic, retain, readonly) UIWebView *webView;
-@property (nonatomic, retain) NSURL *URL;
-
-- (id)initWithURL:(NSURL *)URL;
+- (id)initWithAddress:(NSString*)urlString;
+- (id)initWithURL:(NSURL*)URL;
 
 @end
