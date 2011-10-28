@@ -162,7 +162,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalViewController instead.");
+    NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
 	[super viewWillAppear:animated];
 	

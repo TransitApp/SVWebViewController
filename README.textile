@@ -1,3 +1,5 @@
+_IMPORTANT: on Oct 26th 2011, SVWebViewController received a major overhaul of its inner working. Upgrading from an earlier version of a SVWebViewController will crash your app if you're presenting SVWebViewController modally (using @presentModalViewController:@). Please update your code and use @SVModalWebViewController@ in replacement of @SVWebViewController@ when it's presented modally._
+
 h1. SVWebViewController
 
 is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's inline browser, and the iPad version on "Reeder":http://reederapp.com/ipad/. 
