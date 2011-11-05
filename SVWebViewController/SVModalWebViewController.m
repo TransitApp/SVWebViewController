@@ -11,7 +11,14 @@
 
 @implementation SVModalWebViewController
 
+@synthesize barsTintColor;
+
 #pragma mark - Initialization
+
+- (void)dealloc {
+    self.barsTintColor = nil;
+    [super dealloc];
+}
 
 - (id)initWithAddress:(NSString*)urlString {
     return [self initWithURL:[NSURL URLWithString:urlString]];
@@ -23,6 +30,12 @@
         webViewController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)] autorelease];
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationBar.tintColor = self.toolbar.tintColor = self.barsTintColor;
 }
 
 @end

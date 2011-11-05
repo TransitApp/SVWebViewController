@@ -15,4 +15,6 @@
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL *)URL;
 
+@property (nonatomic, retain) UIColor *barsTintColor;
+
 @end
