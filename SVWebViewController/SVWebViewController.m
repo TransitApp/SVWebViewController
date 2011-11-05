@@ -36,6 +36,8 @@
 
 @implementation SVWebViewController
 
+@synthesize availableActions;
+
 @synthesize URL, mainWebView;
 @synthesize backBarButtonItem, forwardBarButtonItem, refreshBarButtonItem, stopBarButtonItem, actionBarButtonItem, pageActionSheet;
 
@@ -94,7 +96,19 @@
                         delegate:self 
                         cancelButtonTitle:nil   
                         destructiveButtonTitle:nil   
-                        otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil]; 
+                        otherButtonTitles:nil]; 
+
+        if((self.availableActions & SVWebViewControllerAvailableActionsCopyLink) == SVWebViewControllerAvailableActionsCopyLink)
+            [pageActionSheet addButtonWithTitle:NSLocalizedString(@"Copy Link", @"")];
+        
+        if((self.availableActions & SVWebViewControllerAvailableActionsOpenInSafari) == SVWebViewControllerAvailableActionsOpenInSafari)
+            [pageActionSheet addButtonWithTitle:NSLocalizedString(@"Open in Safari", @"")];
+        
+        if([MFMailComposeViewController canSendMail] && (self.availableActions & SVWebViewControllerAvailableActionsMailLink) == SVWebViewControllerAvailableActionsMailLink)
+            [pageActionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
+        
+        [pageActionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+        pageActionSheet.cancelButtonIndex = [self.pageActionSheet numberOfButtons]-1;
     }
     
     return pageActionSheet;
@@ -108,8 +122,10 @@
 
 - (id)initWithURL:(NSURL*)pageURL {
     
-    if(self = [super init])
+    if(self = [super init]) {
         self.URL = pageURL;
+        self.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsMailLink;
+    }
     
     return self;
 }
@@ -201,35 +217,65 @@
     UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        NSArray *items = [NSArray arrayWithObjects:
-                          fixedSpace,
-                          refreshStopBarButtonItem,
-                          flexibleSpace,
-                          self.backBarButtonItem,
-                          flexibleSpace,
-                          self.forwardBarButtonItem,
-                          flexibleSpace,
-                          self.actionBarButtonItem,
-                          fixedSpace,
-                          nil];
+        NSArray *items;
+        CGFloat toolbarWidth = 250.0f;
         
-        UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 250.0f, 44.0f)] autorelease];
+        if(self.availableActions == 0) {
+            toolbarWidth = 200.0f;
+            items = [NSArray arrayWithObjects:
+                     fixedSpace,
+                     refreshStopBarButtonItem,
+                     flexibleSpace,
+                     self.backBarButtonItem,
+                     flexibleSpace,
+                     self.forwardBarButtonItem,
+                     fixedSpace,
+                     nil];
+        } else {
+            items = [NSArray arrayWithObjects:
+                     fixedSpace,
+                     refreshStopBarButtonItem,
+                     flexibleSpace,
+                     self.backBarButtonItem,
+                     flexibleSpace,
+                     self.forwardBarButtonItem,
+                     flexibleSpace,
+                     self.actionBarButtonItem,
+                     fixedSpace,
+                     nil];
+        }
+        
+        UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)] autorelease];
         toolbar.items = items;
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:toolbar] autorelease];
     } 
     
     else {
-        NSArray *items = [NSArray arrayWithObjects:
-                          fixedSpace,
-                          self.backBarButtonItem, 
-                          flexibleSpace,
-                          self.forwardBarButtonItem,
-                          flexibleSpace,
-                          refreshStopBarButtonItem,
-                          flexibleSpace,
-                          self.actionBarButtonItem,
-                          fixedSpace,
-                          nil];
+        NSArray *items;
+        
+        if(self.availableActions == 0) {
+            items = [NSArray arrayWithObjects:
+                     flexibleSpace,
+                     self.backBarButtonItem, 
+                     flexibleSpace,
+                     self.forwardBarButtonItem,
+                     flexibleSpace,
+                     refreshStopBarButtonItem,
+                     flexibleSpace,
+                     nil];
+        } else {
+            items = [NSArray arrayWithObjects:
+                     fixedSpace,
+                     self.backBarButtonItem, 
+                     flexibleSpace,
+                     self.forwardBarButtonItem,
+                     flexibleSpace,
+                     refreshStopBarButtonItem,
+                     flexibleSpace,
+                     self.actionBarButtonItem,
+                     fixedSpace,
+                     nil];
+        }
         
         self.toolbarItems = items;
     }
@@ -281,12 +327,6 @@
     
     if(pageActionSheet)
         return;
-    
-	if([MFMailComposeViewController canSendMail])
-        [self.pageActionSheet addButtonWithTitle:NSLocalizedString(@"Mail Link to this Page", @"")];
-
-	[self.pageActionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
-	self.pageActionSheet.cancelButtonIndex = [self.pageActionSheet numberOfButtons]-1;
 	
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         [self.pageActionSheet showFromBarButtonItem:self.actionBarButtonItem animated:YES];
@@ -308,6 +348,11 @@
     
 	if([title isEqualToString:NSLocalizedString(@"Open in Safari", @"")])
         [[UIApplication sharedApplication] openURL:self.mainWebView.request.URL];
+    
+    if([title isEqualToString:NSLocalizedString(@"Copy Link", @"")]) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.mainWebView.request.URL.absoluteString;
+    }
     
     else if([title isEqualToString:NSLocalizedString(@"Mail Link to this Page", @"")]) {
         

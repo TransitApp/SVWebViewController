@@ -9,9 +9,16 @@
 #import "SVModalWebViewController.h"
 #import "SVWebViewController.h"
 
+@interface SVModalWebViewController ()
+
+@property (nonatomic, assign) SVWebViewController *webViewController;
+
+@end
+
+
 @implementation SVModalWebViewController
 
-@synthesize barsTintColor;
+@synthesize barsTintColor, availableActions, webViewController;
 
 #pragma mark - Initialization
 
@@ -25,9 +32,9 @@
 }
 
 - (id)initWithURL:(NSURL *)URL {
-    SVWebViewController *webViewController = [[[SVWebViewController alloc] initWithURL:URL] autorelease];
-    if (self = [super initWithRootViewController:webViewController]) {
-        webViewController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)] autorelease];
+    self.webViewController = [[[SVWebViewController alloc] initWithURL:URL] autorelease];
+    if (self = [super initWithRootViewController:self.webViewController]) {
+        self.webViewController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)] autorelease];
     }
     return self;
 }
@@ -36,6 +43,10 @@
     [super viewWillAppear:animated];
     
     self.navigationBar.tintColor = self.toolbar.tintColor = self.barsTintColor;
+}
+
+- (void)setAvailableActions:(SVWebViewControllerAvailableActions)newAvailableActions {
+    self.webViewController.availableActions = newAvailableActions;
 }
 
 @end
