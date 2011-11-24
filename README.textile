@@ -4,16 +4,15 @@ h1. SVWebViewController
 
 is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's inline browser, and the iPad version on "Reeder":http://reederapp.com/ipad/. 
 
-SVWebViewController features:
+!http://f.cl.ly/items/0l3P2E1f1j0X0U3i151z/svwebviewcontroller4.png!
+
+**SVWebViewController features:**
 
 * iPhone and iPad distinct UIs
 * full landscape orientation support
 * back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Mail Link")
 * navbar title set to the currently visible web page
 * talks with @setNetworkActivityIndicatorVisible@
-
-
-!http://samvermette.com/files/svwebviewcontroller4.png!
 
 h2. Installation
 
@@ -59,7 +58,7 @@ Default is @SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControlle
 
 h2. Automatic Referencing counting (ARC) support
 
-SVWebViewController doesn't support ARC. You can disable ARC on a per-file basis by adding the @-fno-objc-arc@ compiler flag for those files (see "this StackOverflow thread":http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project for reference). Anyone who loves ARC enough to add it to SVWebViewController is welcome to open a pull request and I'll be happy to create a new ARC branch.
+Maintaining an official ARC branch has proven to be too much work, often leading to confusion since the ARC branch is always a few commits behind. If you'd like to use SVWebViewController in your ARC-enabled project, you'll have to "add the @-fno-objc-arc@ compiler flag":http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project to all of SVWebViewController's files.
 
 h2. Credits
 
