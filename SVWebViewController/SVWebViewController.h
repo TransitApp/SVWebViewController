@@ -10,11 +10,11 @@
 
 #import "SVModalWebViewController.h"
 
-@interface SVWebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface SVWebViewController : UIViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
 
-@property (nonatomic, assign) SVWebViewControllerAvailableActions availableActions;
+@property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 
 @end

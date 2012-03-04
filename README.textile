@@ -1,4 +1,4 @@
-_IMPORTANT: on Oct 26th 2011, SVWebViewController received a major overhaul of its inner working. Upgrading from an earlier version of a SVWebViewController will crash your app if you're presenting SVWebViewController modally (using @presentModalViewController:@). Please update your code and use @SVModalWebViewController@ in replacement of @SVWebViewController@ when it's presented modally._
+__Note: SVWebViewController now uses Automatic Reference Counting (ARC). Find the last MRC commit on the "master-mrc":https://github.com/samvermette/SVWebViewController/tree/master-mrc branch.__
 
 h1. SVWebViewController
 
@@ -39,7 +39,9 @@ SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] 
 [webViewController release];
 </pre>
 
-@SVModalWebViewController@ boasts a @barsTintColor@ property, if you're into giving the navigation bar and toolbar a custom tint color.
+h3. Changing the bars tint color
+
+Only @SVModalWebViewController@ supports custom tint colors using the @barsTintColor@ property.
 
 h3. Customizing the action sheet
 
@@ -55,10 +57,6 @@ enum {
 </pre>
 
 Default is @SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsMailLink@.
-
-h2. Automatic Referencing counting (ARC) support
-
-Maintaining an official ARC branch has proven to be too much work, often leading to confusion since the ARC branch is always a few commits behind. If you'd like to use SVWebViewController in your ARC-enabled project, you'll have to "add the @-fno-objc-arc@ compiler flag":http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project to all of SVWebViewController's files.
 
 h2. Credits
 

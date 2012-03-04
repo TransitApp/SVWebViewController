@@ -27,12 +27,6 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)dealloc {
-    [window release];
-    [navigationController release];
-    
-    [super dealloc];
-}
 
 
 @end
