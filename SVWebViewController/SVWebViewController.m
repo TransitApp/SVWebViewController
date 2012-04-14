@@ -130,13 +130,6 @@
     return self;
 }
 
-#pragma mark - Memory management
-
-- (void)dealloc {
-    mainWebView.delegate = nil;
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
-
 #pragma mark - View lifecycle
 
 - (void)loadView {
@@ -304,8 +297,6 @@
 
 - (void)stopClicked:(UIBarButtonItem *)sender {
     [mainWebView stopLoading];
-    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[self updateToolbarItems];
 }
 
