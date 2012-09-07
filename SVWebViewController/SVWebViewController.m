@@ -186,6 +186,13 @@
     return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
+- (void)dealloc
+{
+    [mainWebView stopLoading];
+ 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    mainWebView.delegate = nil;
+}
+
 #pragma mark - Toolbar
 
 - (void)updateToolbarItems {
