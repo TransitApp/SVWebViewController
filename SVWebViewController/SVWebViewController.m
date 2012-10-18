@@ -174,12 +174,23 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
     
     return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
+- (void)dealloc
+{
+    [mainWebView stopLoading];
+ 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    mainWebView.delegate = nil;
 }
 
 #pragma mark - Toolbar
@@ -226,6 +237,7 @@
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
+        toolbar.tintColor = self.navigationController.navigationBar.tintColor;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     } 
     
