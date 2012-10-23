@@ -91,13 +91,13 @@
 - (UIActionSheet *)pageActionSheet {
     
     if(!pageActionSheet) {
-        pageActionSheet = [[UIActionSheet alloc] 
-                        initWithTitle:self.mainWebView.request.URL.absoluteString
-                        delegate:self 
-                        cancelButtonTitle:nil   
-                        destructiveButtonTitle:nil   
-                        otherButtonTitles:nil]; 
-
+        pageActionSheet = [[UIActionSheet alloc]
+                           initWithTitle:self.mainWebView.request.URL.absoluteString
+                           delegate:self
+                           cancelButtonTitle:nil
+                           destructiveButtonTitle:nil
+                           otherButtonTitles:nil];
+        
         if((self.availableActions & SVWebViewControllerAvailableActionsCopyLink) == SVWebViewControllerAvailableActionsCopyLink)
             [pageActionSheet addButtonWithTitle:NSLocalizedString(@"Copy Link", @"")];
         
@@ -174,23 +174,12 @@
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return YES;
     
     return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
-}
-
-- (void)dealloc
-{
-    [mainWebView stopLoading];
- 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    mainWebView.delegate = nil;
 }
 
 #pragma mark - Toolbar
@@ -237,9 +226,8 @@
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
-        toolbar.tintColor = self.navigationController.navigationBar.tintColor;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
-    } 
+    }
     
     else {
         NSArray *items;
@@ -247,7 +235,7 @@
         if(self.availableActions == 0) {
             items = [NSArray arrayWithObjects:
                      flexibleSpace,
-                     self.backBarButtonItem, 
+                     self.backBarButtonItem,
                      flexibleSpace,
                      self.forwardBarButtonItem,
                      flexibleSpace,
@@ -257,7 +245,7 @@
         } else {
             items = [NSArray arrayWithObjects:
                      fixedSpace,
-                     self.backBarButtonItem, 
+                     self.backBarButtonItem,
                      flexibleSpace,
                      self.forwardBarButtonItem,
                      flexibleSpace,
@@ -325,7 +313,11 @@
 }
 
 - (void)doneButtonClicked:(id)sender {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
     [self dismissModalViewControllerAnimated:YES];
+#else
+    [self dismissViewControllerAnimated:YES completion:NULL];
+#endif
 }
 
 #pragma mark -
@@ -351,7 +343,11 @@
   		[mailViewController setMessageBody:self.mainWebView.request.URL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 		[self presentModalViewController:mailViewController animated:YES];
+#else
+        [self presentViewController:mailViewController animated:YES completion:NULL];
+#endif
 	}
     
     pageActionSheet = nil;
@@ -360,11 +356,16 @@
 #pragma mark -
 #pragma mark MFMailComposeViewControllerDelegate
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller 
-          didFinishWithResult:(MFMailComposeResult)result 
-                        error:(NSError *)error 
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
 {
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 	[self dismissModalViewControllerAnimated:YES];
+#else
+    [self dismissViewControllerAnimated:YES completion:NULL];
+#endif
 }
 
 @end
