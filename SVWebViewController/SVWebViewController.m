@@ -325,7 +325,11 @@
 }
 
 - (void)doneButtonClicked:(id)sender {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
     [self dismissModalViewControllerAnimated:YES];
+#else
+    [self dismissViewControllerAnimated:YES completion:NULL];
+#endif
 }
 
 #pragma mark -
@@ -351,7 +355,11 @@
   		[mailViewController setMessageBody:self.mainWebView.request.URL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 		[self presentModalViewController:mailViewController animated:YES];
+#else
+        [self presentViewController:mailViewController animated:YES completion:NULL];
+#endif
 	}
     
     pageActionSheet = nil;
@@ -360,11 +368,16 @@
 #pragma mark -
 #pragma mark MFMailComposeViewControllerDelegate
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller 
-          didFinishWithResult:(MFMailComposeResult)result 
-                        error:(NSError *)error 
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
 {
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 	[self dismissModalViewControllerAnimated:YES];
+#else
+    [self dismissViewControllerAnimated:YES completion:NULL];
+#endif
 }
 
 @end
