@@ -11,6 +11,7 @@ is a simple inline browser for iOS. The iPhone UI is highly based on Tweetie's i
 * iPhone and iPad distinct UIs
 * full landscape orientation support
 * back, forward, stop/refresh and action buttons (with actions "Open in Safari" and "Mail Link")
+* "Open in Chrome" action button if Google Chrome is installed (by "alexruperez":http://github.com/alexruperez)
 * navbar title set to the currently visible web page
 * talks with @setNetworkActivityIndicatorVisible@
 
@@ -52,11 +53,12 @@ enum {
     SVWebViewControllerAvailableActionsNone             = 0,
     SVWebViewControllerAvailableActionsOpenInSafari     = 1 << 0,
     SVWebViewControllerAvailableActionsMailLink         = 1 << 1,
-    SVWebViewControllerAvailableActionsCopyLink         = 1 << 2
+    SVWebViewControllerAvailableActionsCopyLink         = 1 << 2,
+    SVWebViewControllerAvailableActionsOpenInChrome     = 1 << 3
 };
 </pre>
 
-Default is @SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsMailLink@.
+Default is @SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsOpenInChrome | SVWebViewControllerAvailableActionsMailLink@.
 
 h2. Credits
 

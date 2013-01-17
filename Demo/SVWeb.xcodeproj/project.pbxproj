@@ -15,12 +15,13 @@
 		221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2214589F13133B3600ED7D83 /* MessageUI.framework */; };
 		221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */; };
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
-		22A7488B1630AC34004893A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7488A1630AC34004893A8 /* Default-568h@2x.png */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
 		22F0877214587BBF003ECD31 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 22F0877114587BBF003ECD31 /* README.textile */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* ViewController.m */; };
 		28F335F11007B36200424DE2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* ViewController.xib */; };
+		D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D53D8F1516A8688600711E30 /* SVWebViewController.strings */; };
+		D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FA63C416A8707A0087531C /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +35,6 @@
 		221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
-		22A7488A1630AC34004893A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		22F0876F1458794B003ECD31 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		22F0877114587BBF003ECD31 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
@@ -45,6 +45,10 @@
 		28F335F01007B36200424DE2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ViewController.xib; path = ../ViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SVWeb-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SVWeb-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D53D8F1716A868C900711E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		D53D8F1816A8693200711E30 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
+		D53D8F1916A8693A00711E30 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		D5FA63C416A8707A0087531C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
 				221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */,
 				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
+				D53D8F1516A8688600711E30 /* SVWebViewController.strings */,
 			);
 			name = SVWebViewController;
 			path = ../SVWebViewController;
@@ -105,7 +110,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				22A7488A1630AC34004893A8 /* Default-568h@2x.png */,
+				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
 				22F0877114587BBF003ECD31 /* README.textile */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2214586C13132D3200ED7D83 /* SVWebViewController */,
@@ -185,6 +190,9 @@
 				German,
 				en,
 				fr,
+				de,
+				"es-ES",
+				es,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -205,7 +213,8 @@
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
 				22F0877214587BBF003ECD31 /* README.textile in Resources */,
-				22A7488B1630AC34004893A8 /* Default-568h@2x.png in Resources */,
+				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
+				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +234,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D53D8F1516A8688600711E30 /* SVWebViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D53D8F1716A868C900711E30 /* en */,
+				D53D8F1816A8693200711E30 /* es-ES */,
+				D53D8F1916A8693A00711E30 /* es */,
+			);
+			name = SVWebViewController.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
