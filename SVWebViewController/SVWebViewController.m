@@ -108,7 +108,7 @@
             [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Open in Chrome", @"SVWebViewController", @"")];
         
         if([MFMailComposeViewController canSendMail] && (self.availableActions & SVWebViewControllerAvailableActionsMailLink) == SVWebViewControllerAvailableActionsMailLink)
-            [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Mail Link", @"SVWebViewController", @"")];
+            [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Mail Link to this Page", @"SVWebViewController", @"")];
         
         [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"SVWebViewController", @"")];
         pageActionSheet.cancelButtonIndex = [self.pageActionSheet numberOfButtons]-1;
@@ -373,7 +373,7 @@
         pasteboard.string = self.mainWebView.request.URL.absoluteString;
     }
     
-    else if([title isEqualToString:NSLocalizedStringFromTable(@"Mail Link", @"SVWebViewController", @"")]) {
+    else if([title isEqualToString:NSLocalizedStringFromTable(@"Mail Link to this Page", @"SVWebViewController", @"")]) {
         
 		MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         
