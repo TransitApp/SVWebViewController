@@ -344,10 +344,10 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     
-	if([title isEqualToString:NSLocalizedStringFromTable(@"Open in Safari", @"SVWebViewController", @"")])
+	if([title localizedCompare:NSLocalizedStringFromTable(@"Open in Safari", @"SVWebViewController", @"")] == NSOrderedSame)
         [[UIApplication sharedApplication] openURL:self.mainWebView.request.URL];
     
-    if([title isEqualToString:NSLocalizedStringFromTable(@"Open in Chrome", @"SVWebViewController", @"")]) {
+    if([title localizedCompare:NSLocalizedStringFromTable(@"Open in Chrome", @"SVWebViewController", @"")] == NSOrderedSame) {
         NSURL *inputURL = self.mainWebView.request.URL;
         NSString *scheme = inputURL.scheme;
         
@@ -371,12 +371,12 @@
         }
     }
     
-    if([title isEqualToString:NSLocalizedStringFromTable(@"Copy Link", @"SVWebViewController", @"")]) {
+    if([title localizedCompare:NSLocalizedStringFromTable(@"Copy Link", @"SVWebViewController", @"")] == NSOrderedSame) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = self.mainWebView.request.URL.absoluteString;
     }
     
-    else if([title isEqualToString:NSLocalizedStringFromTable(@"Mail Link to this Page", @"SVWebViewController", @"")]) {
+    else if([title localizedCompare:NSLocalizedStringFromTable(@"Mail Link to this Page", @"SVWebViewController", @"")] == NSOrderedSame) {
         
 		MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         
