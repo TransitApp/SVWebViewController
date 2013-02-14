@@ -133,13 +133,18 @@
     return self;
 }
 
+- (void)loadURL:(NSURL *)pageURL
+{
+    [mainWebView loadRequest:[NSURLRequest requestWithURL:pageURL]];
+}
+
 #pragma mark - View lifecycle
 
 - (void)loadView {
     mainWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainWebView.delegate = self;
     mainWebView.scalesPageToFit = YES;
-    [mainWebView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+    [self loadURL:self.URL];
     self.view = mainWebView;
 }
 
