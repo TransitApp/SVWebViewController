@@ -22,6 +22,7 @@
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
+- (void)loadURL:(NSURL*)URL;
 
 - (void)updateToolbarItems;
 
@@ -133,13 +134,17 @@
     return self;
 }
 
+- (void)loadURL:(NSURL *)pageURL {
+    [mainWebView loadRequest:[NSURLRequest requestWithURL:pageURL]];
+}
+
 #pragma mark - View lifecycle
 
 - (void)loadView {
     mainWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainWebView.delegate = self;
     mainWebView.scalesPageToFit = YES;
-    [mainWebView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+    [self loadURL:self.URL];
     self.view = mainWebView;
 }
 
