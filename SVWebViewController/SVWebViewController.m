@@ -22,6 +22,7 @@
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
+- (void)loadURL:(NSURL*)URL;
 
 - (void)updateToolbarItems;
 
@@ -133,8 +134,7 @@
     return self;
 }
 
-- (void)loadURL:(NSURL *)pageURL
-{
+- (void)loadURL:(NSURL *)pageURL {
     [mainWebView loadRequest:[NSURLRequest requestWithURL:pageURL]];
 }
 
