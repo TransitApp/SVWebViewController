@@ -29,15 +29,13 @@ Just like any UIViewController, SVWebViewController can be pushed into a UINavig
 <pre>
 SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
 [self.navigationController pushViewController:webViewController animated:YES];
-[webViewController release];
 </pre>
 
 It can also be presented modally using @SVModalWebViewController@:
 
 <pre>
 SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:@"http://google.com"];
-[self presentModalViewController:webViewController animated:YES];	
-[webViewController release];
+[self presentModalViewController:webViewController animated:YES];
 </pre>
 
 h3. Changing the bars tint color
