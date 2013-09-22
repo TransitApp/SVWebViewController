@@ -12,7 +12,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */; };
-		221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2214589F13133B3600ED7D83 /* MessageUI.framework */; };
 		221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */; };
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
@@ -20,6 +19,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* ViewController.m */; };
 		28F335F11007B36200424DE2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* ViewController.xib */; };
+		6854F46C91114217BF1613B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD2E4EAB184F72ACE29999 /* libPods.a */; };
 		D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D53D8F1516A8688600711E30 /* SVWebViewController.strings */; };
 		D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FA63C416A8707A0087531C /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -32,7 +32,6 @@
 		1D6058910D05DD3D006BFB54 /* SVWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
-		2214589F13133B3600ED7D83 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -46,7 +45,9 @@
 		28F335F01007B36200424DE2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ViewController.xib; path = ../ViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		431F485D17145A510045AA32 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		6DAD2E4EAB184F72ACE29999 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* SVWeb-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SVWeb-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A0667BBC457D4307AC51AC26 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D53D8F1716A868C900711E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
 		D53D8F1816A8693200711E30 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		D53D8F1916A8693A00711E30 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
@@ -60,7 +61,7 @@
 			files = (
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */,
+				6854F46C91114217BF1613B7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,9 +93,9 @@
 			children = (
 				22F0876E1458794B003ECD31 /* SVModalWebViewController.h */,
 				22F0876F1458794B003ECD31 /* SVModalWebViewController.m */,
+				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
 				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
 				221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */,
-				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
 				D53D8F1516A8688600711E30 /* SVWebViewController.strings */,
 			);
 			name = SVWebViewController;
@@ -121,6 +122,7 @@
 				22473B9A133800DC00F497E6 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				A0667BBC457D4307AC51AC26 /* Pods.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -146,9 +148,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2214589F13133B3600ED7D83 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				6DAD2E4EAB184F72ACE29999 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SVWeb" */;
 			buildPhases = (
+				F7D0ADF41914424E8654B4CF /* Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				0D38A532869148FABE9BA85B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +227,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D38A532869148FABE9BA85B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7D0ADF41914424E8654B4CF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -256,6 +293,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0667BBC457D4307AC51AC26 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -274,6 +312,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0667BBC457D4307AC51AC26 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;

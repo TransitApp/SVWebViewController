@@ -1,0 +1,13 @@
+PODS:
+  - ARChromeActivity (1.0.1)
+  - TUSafariActivity (1.0.0)
+
+DEPENDENCIES:
+  - ARChromeActivity (~> 1.0.1)
+  - TUSafariActivity (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  ARChromeActivity: eb9770a933cfe2b914b8e4e22b684eb7f43f24df
+  TUSafariActivity: bd9da588f5f9136ba445d89f8f86b6dccf4d46ba
+
+COCOAPODS: 0.25.0

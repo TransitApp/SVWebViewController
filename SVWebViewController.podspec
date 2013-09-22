@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.source_files = 'SVWebViewController/*.{h,m}'
   s.resources = 'SVWebViewController/SVWebViewController.bundle'
-  s.framework  = 'MessageUI'
+  s.dependencies = 'ARChromeActivity', 'TUSafariActivity'
   s.requires_arc = true
 end
