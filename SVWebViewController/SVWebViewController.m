@@ -179,29 +179,28 @@
     UIBarButtonItem *refreshStopBarButtonItem = self.self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpace.width = 5.0f;
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         CGFloat toolbarWidth = 250.0f;
-        
+        fixedSpace.width = 35.0f;
+
         NSArray *items = [NSArray arrayWithObjects:
                           fixedSpace,
                           refreshStopBarButtonItem,
-                          flexibleSpace,
-                          self.backBarButtonItem,
-                          flexibleSpace,
-                          self.forwardBarButtonItem,
-                          flexibleSpace,
-                          self.actionBarButtonItem,
                           fixedSpace,
+                          self.backBarButtonItem,
+                          fixedSpace,
+                          self.forwardBarButtonItem,
+                          fixedSpace,
+                          self.actionBarButtonItem,
                           nil];
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
         toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         toolbar.tintColor = self.navigationController.navigationBar.tintColor;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
+        self.navigationItem.rightBarButtonItems = items.reverseObjectEnumerator.allObjects;
     }
     
     else {
