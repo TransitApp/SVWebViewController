@@ -48,8 +48,10 @@
 - (UIBarButtonItem *)backBarButtonItem {
     
     if (!backBarButtonItem) {
-        backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/back"] style:UIBarButtonItemStylePlain target:self action:@selector(goBackClicked:)];
-        backBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
+        backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/SVWebViewControllerBack"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(goBackClicked:)];
 		backBarButtonItem.width = 18.0f;
     }
     return backBarButtonItem;
@@ -58,8 +60,10 @@
 - (UIBarButtonItem *)forwardBarButtonItem {
     
     if (!forwardBarButtonItem) {
-        forwardBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/forward"] style:UIBarButtonItemStylePlain target:self action:@selector(goForwardClicked:)];
-        forwardBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0f, 0.0f, -2.0f, 0.0f);
+        forwardBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/SVWebViewControllerNext"]
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:self
+                                                               action:@selector(goForwardClicked:)];
 		forwardBarButtonItem.width = 18.0f;
     }
     return forwardBarButtonItem;
