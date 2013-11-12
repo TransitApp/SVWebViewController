@@ -22,9 +22,9 @@
 		22AAF0BB1831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0B21831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png */; };
 		22AAF0BC1831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */; };
 		22AAF0BD1831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */; };
+		22AAF0BF1831F5B300AB15C4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0BE1831F5B300AB15C4 /* README.md */; };
 		22DBB66A1831E05D0008887C /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
-		22F0877214587BBF003ECD31 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 22F0877114587BBF003ECD31 /* README.textile */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* ViewController.m */; };
 		28F335F11007B36200424DE2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* ViewController.xib */; };
@@ -53,11 +53,11 @@
 		22AAF0B31831F52F00AB15C4 /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
 		22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
 		22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
+		22AAF0BE1831F5B300AB15C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		22DBB6681831E05D0008887C /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
 		22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		22F0876F1458794B003ECD31 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
-		22F0877114587BBF003ECD31 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
 		28A0AAE50D9B0CCF005BE974 /* SVWeb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWeb_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C286DF0D94DF7D0034E888 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
-				22F0877114587BBF003ECD31 /* README.textile */,
+				22AAF0BE1831F5B300AB15C4 /* README.md */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2214586C13132D3200ED7D83 /* SVWebViewController */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -291,8 +291,8 @@
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
-				22F0877214587BBF003ECD31 /* README.textile in Resources */,
 				22AAF0BD1831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
+				22AAF0BF1831F5B300AB15C4 /* README.md in Resources */,
 				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
 				22AAF0B91831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
