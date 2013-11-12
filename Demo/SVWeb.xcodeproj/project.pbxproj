@@ -14,11 +14,15 @@
 		220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */; };
 		221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */; };
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
+		22AAF0B61831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0AB1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad.png */; };
+		22AAF0B71831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0AC1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
+		22AAF0B81831F52F00AB15C4 /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AAF0AE1831F52F00AB15C4 /* SVWebViewControllerActivityChrome.m */; };
+		22AAF0B91831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0AF1831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png */; };
+		22AAF0BA1831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0B11831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad.png */; };
+		22AAF0BB1831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0B21831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png */; };
+		22AAF0BC1831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */; };
+		22AAF0BD1831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */; };
 		22DBB66A1831E05D0008887C /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */; };
-		22DBB66F1831E4CB0008887C /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */; };
-		22DBB6701831E4CB0008887C /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */; };
-		22DBB6741831E7300008887C /* SVWebViewControllerActivityChrome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */; };
-		22DBB6761831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
 		22F0877214587BBF003ECD31 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 22F0877114587BBF003ECD31 /* README.textile */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -39,14 +43,18 @@
 		221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		22AAF0AB1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome-iPad.png"; sourceTree = "<group>"; };
+		22AAF0AC1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome-iPad@2x.png"; sourceTree = "<group>"; };
+		22AAF0AD1831F52F00AB15C4 /* SVWebViewControllerActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivityChrome.h; sourceTree = "<group>"; };
+		22AAF0AE1831F52F00AB15C4 /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
+		22AAF0AF1831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome@2x.png"; sourceTree = "<group>"; };
+		22AAF0B11831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari-iPad.png"; sourceTree = "<group>"; };
+		22AAF0B21831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari-iPad@2x.png"; sourceTree = "<group>"; };
+		22AAF0B31831F52F00AB15C4 /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
+		22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
+		22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
 		22DBB6681831E05D0008887C /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
 		22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
-		22DBB66B1831E4CB0008887C /* SVWebViewControllerActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivityChrome.h; sourceTree = "<group>"; };
-		22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
-		22DBB66D1831E4CB0008887C /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
-		22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
-		22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome@2x.png"; sourceTree = "<group>"; };
-		22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		22F0876F1458794B003ECD31 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		22F0877114587BBF003ECD31 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
@@ -122,17 +130,37 @@
 			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
+		22AAF0AA1831F52F00AB15C4 /* Chrome */ = {
+			isa = PBXGroup;
+			children = (
+				22AAF0AB1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad.png */,
+				22AAF0AC1831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad@2x.png */,
+				22AAF0AD1831F52F00AB15C4 /* SVWebViewControllerActivityChrome.h */,
+				22AAF0AE1831F52F00AB15C4 /* SVWebViewControllerActivityChrome.m */,
+				22AAF0AF1831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png */,
+			);
+			path = Chrome;
+			sourceTree = "<group>";
+		};
+		22AAF0B01831F52F00AB15C4 /* Safari */ = {
+			isa = PBXGroup;
+			children = (
+				22AAF0B11831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad.png */,
+				22AAF0B21831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png */,
+				22AAF0B31831F52F00AB15C4 /* SVWebViewControllerActivitySafari.h */,
+				22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */,
+				22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */,
+			);
+			path = Safari;
+			sourceTree = "<group>";
+		};
 		22DBB63A1831DD8C0008887C /* UIActivities */ = {
 			isa = PBXGroup;
 			children = (
 				22DBB6681831E05D0008887C /* SVWebViewControllerActivity.h */,
 				22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */,
-				22DBB66D1831E4CB0008887C /* SVWebViewControllerActivitySafari.h */,
-				22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */,
-				22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */,
-				22DBB66B1831E4CB0008887C /* SVWebViewControllerActivityChrome.h */,
-				22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */,
-				22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */,
+				22AAF0B01831F52F00AB15C4 /* Safari */,
+				22AAF0AA1831F52F00AB15C4 /* Chrome */,
 			);
 			path = UIActivities;
 			sourceTree = "<group>";
@@ -256,13 +284,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				22AAF0BA1831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
+				22AAF0BB1831F52F00AB15C4 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
+				22AAF0B71831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
+				22AAF0B61831F52F00AB15C4 /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
-				22DBB6761831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
 				22F0877214587BBF003ECD31 /* README.textile in Resources */,
+				22AAF0BD1831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
-				22DBB6741831E7300008887C /* SVWebViewControllerActivityChrome@2x.png in Resources */,
+				22AAF0B91831F52F00AB15C4 /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,8 +312,8 @@
 				28C286E10D94DF7D0034E888 /* ViewController.m in Sources */,
 				221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */,
 				22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */,
-				22DBB66F1831E4CB0008887C /* SVWebViewControllerActivityChrome.m in Sources */,
-				22DBB6701831E4CB0008887C /* SVWebViewControllerActivitySafari.m in Sources */,
+				22AAF0B81831F52F00AB15C4 /* SVWebViewControllerActivityChrome.m in Sources */,
+				22AAF0BC1831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
