@@ -6,8 +6,8 @@
 //
 //  https://github.com/samvermette/SVWebViewController
 
-#import <ARChromeActivity/ARChromeActivity.h>
-#import <TUSafariActivity/TUSafariActivity.h>
+#import "SVWebViewControllerActivityChrome.h"
+#import "SVWebViewControllerActivitySafari.h"
 #import "SVWebViewController.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
@@ -296,11 +296,9 @@
 }
 
 - (void)actionButtonClicked:(id)sender {
-    ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] initWithCallbackURL:[self callbackURL]];
-    [chromeActivity setActivityTitle:NSLocalizedStringFromTable(@"Open in Chrome", @"SVWebViewController", @"")];
-    TUSafariActivity *safariActivity = [TUSafariActivity new];
+    NSArray *activities = @[[SVWebViewControllerActivityChrome new], [SVWebViewControllerActivitySafari new]];
     
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.mainWebView.request.URL] applicationActivities:@[ chromeActivity, safariActivity ]];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.mainWebView.request.URL] applicationActivities:activities];
     [self presentViewController:activityController animated:YES completion:nil];
 }
 

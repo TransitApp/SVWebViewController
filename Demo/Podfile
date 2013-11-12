@@ -1,4 +1,0 @@
-platform :ios, '7.0'
-
-pod 'ARChromeActivity', '~> 1.0.1'
-pod 'TUSafariActivity', '~> 1.0.0'
