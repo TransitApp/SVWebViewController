@@ -23,7 +23,6 @@
 	NSURL *URL = [NSURL URLWithString:@"http://samvermette.com"];
 	SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
-    webViewController.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsOpenInChrome | SVWebViewControllerAvailableActionsCopyLink | SVWebViewControllerAvailableActionsMailLink;
     [self presentViewController:webViewController animated:YES completion:NULL];
 }
 

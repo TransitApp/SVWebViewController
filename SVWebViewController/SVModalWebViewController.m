@@ -18,7 +18,7 @@
 
 @implementation SVModalWebViewController
 
-@synthesize barsTintColor, availableActions, webViewController;
+@synthesize barsTintColor, webViewController;
 
 #pragma mark - Initialization
 
@@ -40,10 +40,6 @@
     
     self.webViewController.title = self.title;
     self.navigationBar.tintColor = self.barsTintColor;
-}
-
-- (void)setAvailableActions:(SVWebViewControllerAvailableActions)newAvailableActions {
-    self.webViewController.availableActions = newAvailableActions;
 }
 
 @end
