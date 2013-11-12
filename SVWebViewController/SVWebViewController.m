@@ -6,8 +6,8 @@
 //
 //  https://github.com/samvermette/SVWebViewController
 
-#import "SVWebViewControllerActivityChrome.h"
-#import "SVWebViewControllerActivitySafari.h"
+#import "UIActivities/Chrome/SVWebViewControllerActivityChrome.h"
+#import "UIActivities/Safari/SVWebViewControllerActivitySafari.h"
 #import "SVWebViewController.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
