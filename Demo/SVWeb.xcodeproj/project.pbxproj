@@ -168,7 +168,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
 				22AAF0BE1831F5B300AB15C4 /* README.md */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2214586C13132D3200ED7D83 /* SVWebViewController */,
@@ -195,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
 				8D1107310486CEB800E47090 /* SVWeb-Info.plist */,
 			);
 			name = Resources;
