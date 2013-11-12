@@ -14,6 +14,10 @@
     return @"googlechrome://";
 }
 
+- (NSString *)activityTitle {
+	return NSLocalizedStringFromTable(@"Open in Chrome", @"SVWebViewController", nil);
+}
+
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
 	for (id activityItem in activityItems) {
 		if ([activityItem isKindOfClass:[NSURL class]] && [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:self.schemePrefix]]) {

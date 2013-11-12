@@ -12,7 +12,7 @@
 @implementation SVWebViewControllerActivitySafari
 
 - (NSString *)activityTitle {
-	return NSLocalizedStringFromTable(@"Open in Safari", @"SVWebViewControllerActivitySafari", nil);
+	return NSLocalizedStringFromTable(@"Open in Safari", @"SVWebViewController", nil);
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
