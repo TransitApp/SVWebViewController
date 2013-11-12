@@ -2,7 +2,7 @@
 
 SVWebViewController is a simple inline browser for your iOS 7 app.
 
-![SVWebViewController](http://cl.ly/SQo6/download/GitHub.png)
+![SVWebViewController](http://cl.ly/SQVO/download/GitHub.png)
 
 **SVWebViewController features:**
 
