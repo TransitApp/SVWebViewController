@@ -54,6 +54,7 @@
 		22AAF0B41831F52F00AB15C4 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
 		22AAF0B51831F52F00AB15C4 /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
 		22AAF0BE1831F5B300AB15C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		22B0DA4C1832008E00B331B3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
 		22DBB6681831E05D0008887C /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
 		22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 				D53D8F1916A8693A00711E30 /* es */,
 				1A3406D316B7F32300150B11 /* zh-Hant */,
 				431F485D17145A510045AA32 /* fr */,
+				22B0DA4C1832008E00B331B3 /* ja */,
 			);
 			name = SVWebViewController.strings;
 			sourceTree = "<group>";
