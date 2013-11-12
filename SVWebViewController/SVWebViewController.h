@@ -6,11 +6,12 @@
 //
 //  https://github.com/samvermette/SVWebViewController
 
-#import <MessageUI/MessageUI.h>
-
 #import "SVModalWebViewController.h"
 
 @interface SVWebViewController : UIViewController
+
+// For "Open in Chrome" action if you are using it
+@property (strong, nonatomic) NSURL *callbackURL;
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
