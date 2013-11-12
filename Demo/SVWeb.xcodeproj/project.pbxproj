@@ -17,6 +17,8 @@
 		22DBB66A1831E05D0008887C /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */; };
 		22DBB66F1831E4CB0008887C /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */; };
 		22DBB6701831E4CB0008887C /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */; };
+		22DBB6741831E7300008887C /* SVWebViewControllerActivityChrome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */; };
+		22DBB6761831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
 		22F0877214587BBF003ECD31 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 22F0877114587BBF003ECD31 /* README.textile */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -43,6 +45,8 @@
 		22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
 		22DBB66D1831E4CB0008887C /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
 		22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
+		22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome@2x.png"; sourceTree = "<group>"; };
+		22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		22F0876F1458794B003ECD31 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		22F0877114587BBF003ECD31 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
@@ -125,8 +129,10 @@
 				22DBB6691831E05D0008887C /* SVWebViewControllerActivity.m */,
 				22DBB66D1831E4CB0008887C /* SVWebViewControllerActivitySafari.h */,
 				22DBB66E1831E4CB0008887C /* SVWebViewControllerActivitySafari.m */,
+				22DBB6751831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png */,
 				22DBB66B1831E4CB0008887C /* SVWebViewControllerActivityChrome.h */,
 				22DBB66C1831E4CB0008887C /* SVWebViewControllerActivityChrome.m */,
+				22DBB6731831E7300008887C /* SVWebViewControllerActivityChrome@2x.png */,
 			);
 			path = UIActivities;
 			sourceTree = "<group>";
@@ -251,10 +257,12 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
+				22DBB6761831ECFC0008887C /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
 				22F0877214587BBF003ECD31 /* README.textile in Resources */,
 				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
+				22DBB6741831E7300008887C /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
