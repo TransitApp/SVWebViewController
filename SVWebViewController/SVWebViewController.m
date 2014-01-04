@@ -267,8 +267,13 @@
     if (!url || [[url absoluteString] isEqualToString:@""]) {
         url = self.URL;
     }
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
-    [self presentViewController:activityController animated:YES completion:nil];
+    if ([[url absoluteString] hasPrefix:@"file:///"]) {
+        UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
+        [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
+    } else {
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
+        [self presentViewController:activityController animated:YES completion:nil];
+    }
 }
 
 - (void)doneButtonClicked:(id)sender {
