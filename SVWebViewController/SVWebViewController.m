@@ -263,8 +263,8 @@
 
 - (void)actionButtonClicked:(id)sender {
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
-    
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.self.webView.request.URL] applicationActivities:activities];
+    NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.URL;
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
