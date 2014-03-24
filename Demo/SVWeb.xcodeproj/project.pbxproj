@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0447A15218E0E27C001D8D50 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
 		1A3406D316B7F32300150B11 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -332,6 +333,7 @@
 				431F485D17145A510045AA32 /* fr */,
 				22B0DA4C1832008E00B331B3 /* ja */,
 				627D469418D9EA4300E514BB /* de */,
+				0447A15218E0E27C001D8D50 /* pt */,
 			);
 			name = SVWebViewController.strings;
 			sourceTree = "<group>";
