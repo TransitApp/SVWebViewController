@@ -26,7 +26,11 @@
 }
 
 - (id)initWithURL:(NSURL *)URL {
-    self.webViewController = [[SVWebViewController alloc] initWithURL:URL];
+    return [self initWithRequest:[NSURLRequest requestWithURL:URL]];
+}
+
+- (id)initWithRequest:(NSURLRequest *)request {
+    self.webViewController = [[SVWebViewController alloc] initWithRequest:request];
     if (self = [super initWithRootViewController:self.webViewController]) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                     target:self.webViewController

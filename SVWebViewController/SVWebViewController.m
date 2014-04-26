@@ -19,11 +19,12 @@
 @property (nonatomic, strong) UIBarButtonItem *actionBarButtonItem;
 
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSURLRequest *request;
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
-- (void)loadURL:(NSURL*)URL;
+- (id)initWithRequest:(NSURLRequest*)request;
+- (void)loadRequest:(NSURLRequest*)request;
 
 - (void)updateToolbarItems;
 
@@ -51,23 +52,26 @@
 }
 
 - (id)initWithURL:(NSURL*)pageURL {
-    
-    if(self = [super init]) {
-        self.URL = pageURL;
+    return [self initWithRequest:[NSURLRequest requestWithURL:pageURL]];
+}
+
+- (id)initWithRequest:(NSURLRequest*)request {
+    self = [super init];
+    if (self) {
+        self.request = request;
     }
-    
     return self;
 }
 
-- (void)loadURL:(NSURL *)pageURL {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:pageURL]];
+- (void)loadRequest:(NSURLRequest*)request {
+    [self.webView loadRequest:request];
 }
 
 #pragma mark - View lifecycle
 
 - (void)loadView {
     self.view = self.webView;
-    [self loadURL:self.URL];
+    [self loadRequest:self.request];
 }
 
 - (void)viewDidLoad {
@@ -263,7 +267,7 @@
 
 - (void)actionButtonClicked:(id)sender {
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
-    NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.URL;
+    NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.request.URL;
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
     [self presentViewController:activityController animated:YES completion:nil];
 }

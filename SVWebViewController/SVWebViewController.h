@@ -12,5 +12,6 @@
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
+- (id)initWithRequest:(NSURLRequest *)request;
 
 @end
