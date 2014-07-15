@@ -265,15 +265,17 @@
 }
 
 - (void)actionButtonClicked:(id)sender {
-    NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
-    
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.request.URL;
-    if ([[url absoluteString] hasPrefix:@"file:///"]) {
-        UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
-        [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
-    } else {
-        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
-        [self presentViewController:activityController animated:YES completion:nil];
+    if (url != nil) {
+        NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
+        
+        if ([[url absoluteString] hasPrefix:@"file:///"]) {
+            UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
+            [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
+        } else {
+            UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
+            [self presentViewController:activityController animated:YES completion:nil];
+        }
     }
 }
 
