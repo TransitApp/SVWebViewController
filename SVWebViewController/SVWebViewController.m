@@ -49,10 +49,10 @@
 }
 
 - (instancetype)initWithURL:(NSURL*)pageURL {
-    return [self initWithRequest:[NSURLRequest requestWithURL:pageURL]];
+    return [self initWithURLRequest:[NSURLRequest requestWithURL:pageURL]];
 }
 
-- (instancetype)initWithRequest:(NSURLRequest*)request {
+- (instancetype)initWithURLRequest:(NSURLRequest*)request {
     self = [super init];
     if (self) {
         self.request = request;
