@@ -15,6 +15,12 @@
 
 @end
 
+@interface SVWebViewController (DoneButton)
+
+- (void)doneButtonTapped:(id)sender;
+
+@end
+
 
 @implementation SVModalWebViewController
 
@@ -34,7 +40,7 @@
     if (self = [super initWithRootViewController:self.webViewController]) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                     target:self.webViewController
-                                                                                    action:@selector(doneButtonClicked:)];
+                                                                                    action:@selector(doneButtonTapped:)];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             self.webViewController.navigationItem.leftBarButtonItem = doneButton;

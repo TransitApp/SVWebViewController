@@ -282,7 +282,7 @@
     }
 }
 
-- (void)doneButtonClicked:(id)sender {
+- (void)doneButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
