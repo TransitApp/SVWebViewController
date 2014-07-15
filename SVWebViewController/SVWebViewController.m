@@ -21,16 +21,6 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURLRequest *request;
 
-- (void)loadRequest:(NSURLRequest*)request;
-
-- (void)updateToolbarItems;
-
-- (void)goBackClicked:(UIBarButtonItem *)sender;
-- (void)goForwardClicked:(UIBarButtonItem *)sender;
-- (void)reloadClicked:(UIBarButtonItem *)sender;
-- (void)stopClicked:(UIBarButtonItem *)sender;
-- (void)actionButtonClicked:(UIBarButtonItem *)sender;
-
 @end
 
 
@@ -135,7 +125,7 @@
         _backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/SVWebViewControllerBack"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:self
-                                                             action:@selector(goBackClicked:)];
+                                                             action:@selector(goBackTapped:)];
 		_backBarButtonItem.width = 18.0f;
     }
     return _backBarButtonItem;
@@ -146,7 +136,7 @@
         _forwardBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/SVWebViewControllerNext"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
-                                                                action:@selector(goForwardClicked:)];
+                                                                action:@selector(goForwardTapped:)];
 		_forwardBarButtonItem.width = 18.0f;
     }
     return _forwardBarButtonItem;
@@ -154,21 +144,21 @@
 
 - (UIBarButtonItem *)refreshBarButtonItem {
     if (!_refreshBarButtonItem) {
-        _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadClicked:)];
+        _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadTapped:)];
     }
     return _refreshBarButtonItem;
 }
 
 - (UIBarButtonItem *)stopBarButtonItem {
     if (!_stopBarButtonItem) {
-        _stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopClicked:)];
+        _stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopTapped:)];
     }
     return _stopBarButtonItem;
 }
 
 - (UIBarButtonItem *)actionBarButtonItem {
     if (!_actionBarButtonItem) {
-        _actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonClicked:)];
+        _actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
     }
     return _actionBarButtonItem;
 }
@@ -250,24 +240,24 @@
 
 #pragma mark - Target actions
 
-- (void)goBackClicked:(UIBarButtonItem *)sender {
+- (void)goBackTapped:(UIBarButtonItem *)sender {
     [self.webView goBack];
 }
 
-- (void)goForwardClicked:(UIBarButtonItem *)sender {
+- (void)goForwardTapped:(UIBarButtonItem *)sender {
     [self.webView goForward];
 }
 
-- (void)reloadClicked:(UIBarButtonItem *)sender {
+- (void)reloadTapped:(UIBarButtonItem *)sender {
     [self.webView reload];
 }
 
-- (void)stopClicked:(UIBarButtonItem *)sender {
+- (void)stopTapped:(UIBarButtonItem *)sender {
     [self.webView stopLoading];
 	[self updateToolbarItems];
 }
 
-- (void)actionButtonClicked:(id)sender {
+- (void)actionButtonTapped:(id)sender {
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.request.URL;
     if (url != nil) {
         NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
@@ -282,7 +272,7 @@
     }
 }
 
-- (void)doneButtonTapped:(id)sender {
+- (void)doneButtonTapped:(id)sùender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
