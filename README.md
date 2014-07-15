@@ -39,7 +39,7 @@ It can also be presented modally using `SVModalWebViewController`:
 
 ```objective-c
 SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:@"http://google.com"];
-[self presentModalViewController:webViewController animated:YES completion:NULL];
+[self presentViewController:webViewController animated:YES completion:NULL];
 ```
 
 ### SVWebViewControllerActivity
