@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.source       	= { :git => 'https://github.com/samvermette/SVWebViewController.git', :tag => s.version.to_s }
   s.platform     	= :ios, '6.0'
   s.source_files 	= 'SVWebViewController/**/*.{h,m}'
-  s.resources 		= 'SVWebViewController/**/*.{bundle,png}'
+  s.resources 		= 'SVWebViewController/**/*.{bundle,png,lproj}'
   s.requires_arc 	= true
 end
