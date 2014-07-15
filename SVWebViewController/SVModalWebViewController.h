@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SVWebViewController;
-
 @interface SVModalWebViewController : UINavigationController
 
 - (instancetype)initWithAddress:(NSString*)urlString;

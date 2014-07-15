@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SVWebViewController.h"
+#import "SVModalWebViewController.h"
 
 @implementation ViewController
 
