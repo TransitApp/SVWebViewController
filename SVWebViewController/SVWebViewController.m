@@ -19,11 +19,9 @@
 @property (nonatomic, strong) UIBarButtonItem *actionBarButtonItem;
 
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSURLRequest *request;
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL*)URL;
-- (void)loadURL:(NSURL*)URL;
+- (void)loadRequest:(NSURLRequest*)request;
 
 - (void)updateToolbarItems;
 
@@ -46,28 +44,31 @@
     self.webView.delegate = nil;
 }
 
-- (id)initWithAddress:(NSString *)urlString {
+- (instancetype)initWithAddress:(NSString *)urlString {
     return [self initWithURL:[NSURL URLWithString:urlString]];
 }
 
-- (id)initWithURL:(NSURL*)pageURL {
-    
-    if(self = [super init]) {
-        self.URL = pageURL;
+- (instancetype)initWithURL:(NSURL*)pageURL {
+    return [self initWithRequest:[NSURLRequest requestWithURL:pageURL]];
+}
+
+- (instancetype)initWithRequest:(NSURLRequest*)request {
+    self = [super init];
+    if (self) {
+        self.request = request;
     }
-    
     return self;
 }
 
-- (void)loadURL:(NSURL *)pageURL {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:pageURL]];
+- (void)loadRequest:(NSURLRequest*)request {
+    [self.webView loadRequest:request];
 }
 
 #pragma mark - View lifecycle
 
 - (void)loadView {
     self.view = self.webView;
-    [self loadURL:self.URL];
+    [self loadRequest:self.request];
 }
 
 - (void)viewDidLoad {
@@ -265,10 +266,8 @@
 
 - (void)actionButtonClicked:(id)sender {
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
-    NSURL *url = self.self.webView.request.URL;
-    if (!url || [[url absoluteString] isEqualToString:@""]) {
-        url = self.URL;
-    }
+    
+    NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.request.URL;
     if ([[url absoluteString] hasPrefix:@"file:///"]) {
         UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
         [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
