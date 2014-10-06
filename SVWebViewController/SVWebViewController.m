@@ -267,6 +267,17 @@
             [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
         } else {
             UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
+            
+#ifdef __IPHONE_8_0
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1 &&
+                UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+            {
+                UIPopoverPresentationController *ctrl = activityController.popoverPresentationController;
+                ctrl.sourceView = self.view;
+                ctrl.barButtonItem = sender;
+            }
+#endif
+            
             [self presentViewController:activityController animated:YES completion:nil];
         }
     }
