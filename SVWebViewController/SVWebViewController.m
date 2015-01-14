@@ -30,8 +30,9 @@
 
 - (void)dealloc {
     [self.webView stopLoading];
- 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     self.webView.delegate = nil;
+    self.delegate = nil;
 }
 
 - (instancetype)initWithAddress:(NSString *)urlString {
@@ -62,7 +63,7 @@
 }
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
     [self updateToolbarItems];
 }
 
@@ -79,8 +80,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
-	[super viewWillAppear:animated];
-	
+    [super viewWillAppear:animated];
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
@@ -126,7 +127,7 @@
                                                               style:UIBarButtonItemStylePlain
                                                              target:self
                                                              action:@selector(goBackTapped:)];
-		_backBarButtonItem.width = 18.0f;
+        _backBarButtonItem.width = 18.0f;
     }
     return _backBarButtonItem;
 }
@@ -137,7 +138,7 @@
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(goForwardTapped:)];
-		_forwardBarButtonItem.width = 18.0f;
+        _forwardBarButtonItem.width = 18.0f;
     }
     return _forwardBarButtonItem;
 }
@@ -218,24 +219,44 @@
 #pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self updateToolbarItems];
+    
+    if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+        [self.delegate webViewDidStartLoad:webView];
+    }
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     if (self.navigationItem.title == nil) {
         self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     }
     
     [self updateToolbarItems];
+    
+    if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+        [self.delegate webViewDidFinishLoad:webView];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self updateToolbarItems];
+    
+    if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
+        [self.delegate webView:webView didFailLoadWithError:error];
+    }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
+        return [self.delegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    
+    return YES;
 }
 
 #pragma mark - Target actions
@@ -254,7 +275,7 @@
 
 - (void)stopTapped:(UIBarButtonItem *)sender {
     [self.webView stopLoading];
-	[self updateToolbarItems];
+    [self updateToolbarItems];
 }
 
 - (void)actionButtonTapped:(id)sender {

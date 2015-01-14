@@ -57,4 +57,14 @@
     self.navigationBar.tintColor = self.barsTintColor;
 }
 
+#pragma mark - Delegate
+
+- (void)setWebViewDelegate:(id<UIWebViewDelegate>)webViewDelegate {
+    self.webViewController.delegate = webViewDelegate;
+}
+
+- (id<UIWebViewDelegate>)webViewDelegate {
+    return self.webViewController.delegate;
+}
+
 @end
