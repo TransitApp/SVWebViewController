@@ -39,7 +39,7 @@
     self.webViewController = [[SVWebViewController alloc] initWithURLRequest:request];
     if (self = [super initWithRootViewController:self.webViewController]) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                    target:self.webViewController
+                                                                                    target:self
                                                                                     action:@selector(doneButtonTapped:)];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -65,6 +65,14 @@
 
 - (id<UIWebViewDelegate>)webViewDelegate {
     return self.webViewController.delegate;
+}
+
+- (void)doneButtonTapped:(id)sender {
+    [self.webViewController doneButtonTapped:sender];
+    
+    if ([self.webViewDelegate respondsToSelector:@selector(controllerDidPressDoneButton:)]) {
+        [self.webViewDelegate controllerDidPressDoneButton:self];
+    }
 }
 
 @end
