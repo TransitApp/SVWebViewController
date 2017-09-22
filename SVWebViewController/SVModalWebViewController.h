@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SVModalWebViewController;
+
+@protocol SVModalWebViewController <UIWebViewDelegate>
+
+@optional
+- (void)controllerDidPressDoneButton:(SVModalWebViewController *)controller;
+
+@end
+
 @interface SVModalWebViewController : UINavigationController
 
 - (instancetype)initWithAddress:(NSString*)urlString;
@@ -15,6 +24,6 @@
 - (instancetype)initWithURLRequest:(NSURLRequest *)request;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
-@property (nonatomic, weak) id<UIWebViewDelegate> webViewDelegate;
+@property (nonatomic, weak) id<SVModalWebViewController> webViewDelegate;
 
 @end
