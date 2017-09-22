@@ -10,7 +10,7 @@
 
 @class SVModalWebViewController;
 
-@protocol SVModalWebViewController <UIWebViewDelegate>
+@protocol SVModalWebViewControllerDelegate <UIWebViewDelegate>
 
 @optional
 - (void)controllerDidPressDoneButton:(SVModalWebViewController *)controller;
@@ -24,6 +24,6 @@
 - (instancetype)initWithURLRequest:(NSURLRequest *)request;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
-@property (nonatomic, weak) id<SVModalWebViewController> webViewDelegate;
+@property (nonatomic, weak) id<SVModalWebViewControllerDelegate> webViewDelegate;
 
 @end
