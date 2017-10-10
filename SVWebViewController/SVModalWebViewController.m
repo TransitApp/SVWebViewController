@@ -12,7 +12,6 @@
 @interface SVModalWebViewController ()
 
 @property (nonatomic, strong) SVWebViewController *webViewController;
-
 @end
 
 @interface SVWebViewController (DoneButton)
@@ -38,14 +37,7 @@
 - (instancetype)initWithURLRequest:(NSURLRequest *)request {
     self.webViewController = [[SVWebViewController alloc] initWithURLRequest:request];
     if (self = [super initWithRootViewController:self.webViewController]) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                    target:self
-                                                                                    action:@selector(doneButtonTapped:)];
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-            self.webViewController.navigationItem.leftBarButtonItem = doneButton;
-        else
-            self.webViewController.navigationItem.rightBarButtonItem = doneButton;
+        [self configureDoneButton];
     }
     return self;
 }
@@ -55,6 +47,34 @@
     
     self.webViewController.title = self.title;
     self.navigationBar.tintColor = self.barsTintColor;
+}
+
+- (void)configureDoneButton {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        self.webViewController.navigationItem.leftBarButtonItem = [self barButtonItemForDismissButtonStyle:self.dismissButtonStyle];
+    else
+        self.webViewController.navigationItem.rightBarButtonItem = [self barButtonItemForDismissButtonStyle:self.dismissButtonStyle];
+}
+
+- (void)setDismissButtonStyle:(SVWebViewControllerDismissButtonStyle)dismissButtonStyle {
+    if (_dismissButtonStyle != dismissButtonStyle) {
+        _dismissButtonStyle = dismissButtonStyle;
+        [self configureDoneButton];
+    }
+}
+
+- (UIBarButtonItem *)barButtonItemForDismissButtonStyle:(SVWebViewControllerDismissButtonStyle)dismissButtonStyle {
+    switch (dismissButtonStyle) {
+        case SVWebViewControllerDismissButtonStyleDone:
+            return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                 target:self
+                                                                 action:@selector(doneButtonTapped:)];
+            
+        case SVWebViewControllerDismissButtonStyleCancel:
+            return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                 target:self
+                                                                 action:@selector(doneButtonTapped:)];
+    }
 }
 
 #pragma mark - Delegate

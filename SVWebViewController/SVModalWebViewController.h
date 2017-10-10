@@ -10,6 +10,11 @@
 
 @class SVModalWebViewController;
 
+typedef NS_ENUM(NSUInteger, SVWebViewControllerDismissButtonStyle) {
+    SVWebViewControllerDismissButtonStyleDone = 0,
+    SVWebViewControllerDismissButtonStyleCancel
+};
+
 @protocol SVModalWebViewControllerDelegate <UIWebViewDelegate>
 
 @optional
@@ -25,5 +30,6 @@
 
 @property (nonatomic, strong) UIColor *barsTintColor;
 @property (nonatomic, weak) id<SVModalWebViewControllerDelegate> webViewDelegate;
+@property (nonatomic, assign) SVWebViewControllerDismissButtonStyle dismissButtonStyle;
 
 @end
