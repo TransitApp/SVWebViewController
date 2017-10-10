@@ -50,10 +50,14 @@
 }
 
 - (void)configureDoneButton {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || self.dismissButtonStyle == SVWebViewControllerDismissButtonStyleCancel) {
         self.webViewController.navigationItem.leftBarButtonItem = [self barButtonItemForDismissButtonStyle:self.dismissButtonStyle];
-    else
+        self.webViewController.navigationItem.rightBarButtonItem = nil;
+    }
+    else {
+        self.webViewController.navigationItem.leftBarButtonItem = nil;
         self.webViewController.navigationItem.rightBarButtonItem = [self barButtonItemForDismissButtonStyle:self.dismissButtonStyle];
+    }
 }
 
 - (void)setDismissButtonStyle:(SVWebViewControllerDismissButtonStyle)dismissButtonStyle {
