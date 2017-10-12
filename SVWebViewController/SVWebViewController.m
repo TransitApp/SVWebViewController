@@ -289,7 +289,7 @@
         } else {
             UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
             
-#ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0 
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1 &&
                 UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             {
@@ -304,7 +304,7 @@
     }
 }
 
-- (void)doneButtonTapped:(id)sùender {
+- (void)doneButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
