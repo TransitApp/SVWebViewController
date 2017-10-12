@@ -13,7 +13,7 @@
 - (instancetype)initWithURLRequest:(NSURLRequest *)request;
 
 @property (nonatomic, weak) id<UIWebViewDelegate> delegate;
-
+@property (nonatomic, readonly) UIWebView *webView;
 @property (nonatomic, strong) NSMutableArray<UIActivity *> *activities;
 
 @end
