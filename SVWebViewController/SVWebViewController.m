@@ -281,13 +281,11 @@
 - (void)actionButtonTapped:(id)sender {
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.request.URL;
     if (url != nil) {
-        NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
-        
         if ([[url absoluteString] hasPrefix:@"file:///"]) {
             UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
             [dc presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
         } else {
-            UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
+            UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:self.activities];
             
 #ifdef __IPHONE_8_0 
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1 &&
@@ -306,6 +304,17 @@
 
 - (void)doneButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (NSMutableArray<UIActivity *> *)activities {
+    if (!_activities) {
+        _activities = [NSMutableArray arrayWithArray:SVWebViewController.defaultActivities];
+    }
+    return _activities;
+}
+
++ (NSArray<UIActivity *> *)defaultActivities {
+    return @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
 }
 
 @end

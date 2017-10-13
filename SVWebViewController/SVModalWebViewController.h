@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class SVWebViewController;
 @class SVModalWebViewController;
 
 typedef NS_ENUM(NSUInteger, SVWebViewControllerDismissButtonStyle) {
@@ -27,6 +28,8 @@ typedef NS_ENUM(NSUInteger, SVWebViewControllerDismissButtonStyle) {
 - (instancetype)initWithAddress:(NSString*)urlString;
 - (instancetype)initWithURL:(NSURL *)URL;
 - (instancetype)initWithURLRequest:(NSURLRequest *)request;
+
+@property (nonatomic, readonly) SVWebViewController *webViewController;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
 @property (nonatomic, weak) id<SVModalWebViewControllerDelegate> webViewDelegate;
